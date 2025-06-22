@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Home, CreditCard, Star, Leaf, Settings } from 'lucide-react';
 
 interface NavItem {
@@ -7,9 +7,12 @@ interface NavItem {
   label: string;
 }
 
-const BottomNavigation: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('home');
+interface BottomNavigationProps {
+  activeTab: string;
+  onTabChange: (tab: string) => void;
+}
 
+const BottomNavigation: React.FC<BottomNavigationProps> = ({ activeTab, onTabChange }) => {
   const navItems: NavItem[] = [
     { id: 'home', icon: <Home className="w-5 h-5" />, label: 'Home' },
     { id: 'identity', icon: <CreditCard className="w-5 h-5" />, label: 'Identity' },
@@ -24,7 +27,7 @@ const BottomNavigation: React.FC = () => {
         {navItems.map((item) => (
           <button
             key={item.id}
-            onClick={() => setActiveTab(item.id)}
+            onClick={() => onTabChange(item.id)}
             className={`flex flex-col items-center space-y-1 py-2 px-3 rounded-lg transition-colors ${
               activeTab === item.id
                 ? 'text-primary-red bg-primary-red/10'
