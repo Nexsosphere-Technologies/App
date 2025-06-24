@@ -6,6 +6,7 @@ import RecentActivity from './components/RecentActivity';
 import BottomNavigation from './components/BottomNavigation';
 import IdentityPage from './components/IdentityPage';
 import ReputationPage from './components/ReputationPage';
+import EarnPage from './components/EarnPage';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -17,12 +18,7 @@ function App() {
       case 'reputation':
         return <ReputationPage />;
       case 'earn':
-        return (
-          <div className="max-w-md mx-auto px-4 py-8">
-            <h2 className="text-2xl font-bold text-dark-text mb-4">Earn</h2>
-            <p className="text-dark-text-secondary">Earn page coming soon...</p>
-          </div>
-        );
+        return <EarnPage />;
       case 'settings':
         return (
           <div className="max-w-md mx-auto px-4 py-8">
