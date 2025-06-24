@@ -1,26 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  Bell, 
-  BellOff, 
-  CheckCircle, 
-  Clock, 
-  Shield, 
-  Star, 
-  Coins, 
-  AlertTriangle, 
-  Info, 
-  Gift, 
-  Award, 
-  TrendingUp, 
-  Settings, 
-  Filter,
-  MoreVertical,
-  Trash2,
-  Eye,
-  EyeOff,
-  ArrowLeft,
-  ExternalLink
-} from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface Notification {
   id: string;
@@ -211,19 +190,19 @@ const NotificationsPage: React.FC = () => {
   const getNotificationIcon = (type: string, category: string) => {
     switch (category) {
       case 'new_vc':
-        return <Shield className="w-5 h-5 text-blue-500" />;
+        return <Icon icon="mdi:shield-check" className="w-5 h-5 text-blue-500" />;
       case 'reputation_update':
-        return <TrendingUp className="w-5 h-5 text-green-500" />;
+        return <Icon icon="mdi:trending-up" className="w-5 h-5 text-green-500" />;
       case 'attestation':
-        return <Star className="w-5 h-5 text-purple-500" />;
+        return <Icon icon="mdi:star" className="w-5 h-5 text-purple-500" />;
       case 'badge_earned':
-        return <Award className="w-5 h-5 text-yellow-500" />;
+        return <Icon icon="mdi:award" className="w-5 h-5 text-yellow-500" />;
       case 'staking_rewards':
-        return <Coins className="w-5 h-5 text-primary-red" />;
+        return <Icon icon="mdi:coins" className="w-5 h-5 text-primary-red" />;
       case 'system_announcement':
-        return <Info className="w-5 h-5 text-orange-500" />;
+        return <Icon icon="mdi:information" className="w-5 h-5 text-orange-500" />;
       default:
-        return <Bell className="w-5 h-5 text-dark-text-secondary" />;
+        return <Icon icon="mdi:bell" className="w-5 h-5 text-dark-text-secondary" />;
     }
   };
 
@@ -291,7 +270,7 @@ const NotificationsPage: React.FC = () => {
             onClick={() => setSelectedNotification(null)}
             className="text-dark-text-secondary hover:text-dark-text transition-colors"
           >
-            <ArrowLeft className="w-6 h-6" />
+            <Icon icon="mdi:arrow-left" className="w-6 h-6" />
           </button>
           <h1 className="text-xl font-semibold text-dark-text">Notification Details</h1>
         </div>
@@ -349,7 +328,7 @@ const NotificationsPage: React.FC = () => {
             {selectedNotification.actionUrl && (
               <button className="w-full bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-3 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity">
                 <span>View Details</span>
-                <ExternalLink className="w-4 h-4" />
+                <Icon icon="mdi:open-in-new" className="w-4 h-4" />
               </button>
             )}
             
@@ -386,7 +365,10 @@ const NotificationsPage: React.FC = () => {
                 : 'bg-dark-card border border-dark-border text-dark-text hover:border-primary-red-light/30'
             }`}
           >
-            {showUnreadOnly ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+            {showUnreadOnly ? 
+              <Icon icon="mdi:eye" className="w-4 h-4" /> : 
+              <Icon icon="mdi:eye-off" className="w-4 h-4" />
+            }
             <span>{showUnreadOnly ? 'Show All' : 'Unread Only'}</span>
           </button>
           
@@ -411,7 +393,7 @@ const NotificationsPage: React.FC = () => {
       {/* Notifications List */}
       {filteredNotifications.length === 0 ? (
         <div className="bg-dark-card border border-dark-border rounded-xl p-8 text-center">
-          <Bell className="w-12 h-12 text-dark-text-secondary mx-auto mb-4" />
+          <Icon icon="mdi:bell" className="w-12 h-12 text-dark-text-secondary mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-dark-text mb-2">No notifications</h3>
           <p className="text-dark-text-secondary">
             {showUnreadOnly ? 'No unread notifications' : 'You\'re all caught up!'}
@@ -489,7 +471,7 @@ const NotificationsPage: React.FC = () => {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <Shield className="w-5 h-5 text-blue-500" />
+                <Icon icon="mdi:shield-check" className="w-5 h-5 text-blue-500" />
                 <div>
                   <p className="text-dark-text font-medium">New Credentials</p>
                   <p className="text-sm text-dark-text-secondary">When you receive new verifiable credentials</p>
@@ -516,7 +498,7 @@ const NotificationsPage: React.FC = () => {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <TrendingUp className="w-5 h-5 text-green-500" />
+                <Icon icon="mdi:trending-up" className="w-5 h-5 text-green-500" />
                 <div>
                   <p className="text-dark-text font-medium">Score Updates</p>
                   <p className="text-sm text-dark-text-secondary">When your reputation score changes</p>
@@ -538,7 +520,7 @@ const NotificationsPage: React.FC = () => {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <Star className="w-5 h-5 text-purple-500" />
+                <Icon icon="mdi:star" className="w-5 h-5 text-purple-500" />
                 <div>
                   <p className="text-dark-text font-medium">New Attestations</p>
                   <p className="text-sm text-dark-text-secondary">When others attest to your credentials</p>
@@ -560,7 +542,7 @@ const NotificationsPage: React.FC = () => {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <Award className="w-5 h-5 text-yellow-500" />
+                <Icon icon="mdi:award" className="w-5 h-5 text-yellow-500" />
                 <div>
                   <p className="text-dark-text font-medium">Badges Earned</p>
                   <p className="text-sm text-dark-text-secondary">When you earn new reputation badges</p>
@@ -587,7 +569,7 @@ const NotificationsPage: React.FC = () => {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <Coins className="w-5 h-5 text-primary-red" />
+                <Icon icon="mdi:coins" className="w-5 h-5 text-primary-red" />
                 <div>
                   <p className="text-dark-text font-medium">Staking Rewards</p>
                   <p className="text-sm text-dark-text-secondary">When rewards are available to claim</p>
@@ -614,7 +596,7 @@ const NotificationsPage: React.FC = () => {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <Info className="w-5 h-5 text-orange-500" />
+                <Icon icon="mdi:information" className="w-5 h-5 text-orange-500" />
                 <div>
                   <p className="text-dark-text font-medium">System Announcements</p>
                   <p className="text-sm text-dark-text-secondary">Important platform updates and maintenance</p>
@@ -643,7 +625,7 @@ const NotificationsPage: React.FC = () => {
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Bell className="w-5 h-5 text-blue-500" />
+              <Icon icon="mdi:bell" className="w-5 h-5 text-blue-500" />
               <div>
                 <p className="text-dark-text font-medium">Push Notifications</p>
                 <p className="text-sm text-dark-text-secondary">Receive notifications in your browser</p>
@@ -665,7 +647,7 @@ const NotificationsPage: React.FC = () => {
 
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Info className="w-5 h-5 text-green-500" />
+              <Icon icon="mdi:information" className="w-5 h-5 text-green-500" />
               <div>
                 <p className="text-dark-text font-medium">Email Notifications</p>
                 <p className="text-sm text-dark-text-secondary">Receive notifications via email</p>
@@ -694,8 +676,8 @@ const NotificationsPage: React.FC = () => {
   }
 
   const navigationItems = [
-    { id: 'notifications', label: 'Notifications', icon: <Bell className="w-5 h-5" /> },
-    { id: 'settings', label: 'Settings', icon: <Settings className="w-5 h-5" /> }
+    { id: 'notifications', label: 'Notifications', icon: 'mdi:bell' },
+    { id: 'settings', label: 'Settings', icon: 'mdi:cog' }
   ];
 
   return (
@@ -723,7 +705,7 @@ const NotificationsPage: React.FC = () => {
                   : 'text-dark-text-secondary hover:text-dark-text hover:bg-dark-bg'
               }`}
             >
-              {item.icon}
+              <Icon icon={item.icon} className="w-5 h-5" />
               <span>{item.label}</span>
             </button>
           ))}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Shield, Building2, Globe, Star, Users, CheckCircle, ExternalLink, Filter, ArrowRight, Award, Handshake, Zap, Code, GraduationCap, Briefcase, Heart, Landmark, Smartphone, TowerControl as GameController2, ShoppingCart, CreditCard, TrendingUp, Lock, Eye, Clock, MapPin, Calendar } from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface TrustedIssuer {
   id: string;
@@ -11,7 +11,7 @@ interface TrustedIssuer {
   memberSince: string;
   totalCredentials: number;
   rating: number;
-  logo: React.ReactNode;
+  logo: string;
   color: string;
   website?: string;
   location: string;
@@ -25,7 +25,7 @@ interface IntegratedPlatform {
   features: string[];
   integrationLevel: 'basic' | 'advanced' | 'deep';
   users: string;
-  logo: React.ReactNode;
+  logo: string;
   color: string;
   website?: string;
   launchDate: string;
@@ -38,7 +38,7 @@ interface Partnership {
   description: string;
   benefits: string[];
   status: 'active' | 'development' | 'planned';
-  logo: React.ReactNode;
+  logo: string;
   color: string;
   website?: string;
   announcedDate: string;
@@ -60,7 +60,7 @@ const DiscoverPage: React.FC = () => {
       memberSince: '2023-03-15',
       totalCredentials: 15420,
       rating: 4.9,
-      logo: <GraduationCap className="w-8 h-8" />,
+      logo: 'mdi:school',
       color: 'from-blue-500 to-blue-600',
       website: 'https://mit.edu',
       location: 'Cambridge, MA, USA'
@@ -75,7 +75,7 @@ const DiscoverPage: React.FC = () => {
       memberSince: '2023-01-10',
       totalCredentials: 2840000,
       rating: 4.8,
-      logo: <Shield className="w-8 h-8" />,
+      logo: 'mdi:shield-check',
       color: 'from-green-500 to-green-600',
       website: 'https://hhs.gov',
       location: 'Washington, DC, USA'
@@ -90,7 +90,7 @@ const DiscoverPage: React.FC = () => {
       memberSince: '2023-06-20',
       totalCredentials: 45600,
       rating: 4.7,
-      logo: <Briefcase className="w-8 h-8" />,
+      logo: 'mdi:briefcase',
       color: 'from-purple-500 to-purple-600',
       website: 'https://techcorp.com',
       location: 'San Francisco, CA, USA'
@@ -105,7 +105,7 @@ const DiscoverPage: React.FC = () => {
       memberSince: '2023-02-01',
       totalCredentials: 8750,
       rating: 4.9,
-      logo: <Code className="w-8 h-8" />,
+      logo: 'mdi:code-tags',
       color: 'from-orange-500 to-orange-600',
       website: 'https://algorand.foundation',
       location: 'Singapore'
@@ -120,7 +120,7 @@ const DiscoverPage: React.FC = () => {
       memberSince: '2023-04-12',
       totalCredentials: 125000,
       rating: 4.6,
-      logo: <Landmark className="w-8 h-8" />,
+      logo: 'mdi:bank',
       color: 'from-indigo-500 to-indigo-600',
       website: 'https://globalbankingconsortium.org',
       location: 'London, UK'
@@ -135,7 +135,7 @@ const DiscoverPage: React.FC = () => {
       memberSince: '2023-05-08',
       totalCredentials: 89200,
       rating: 4.5,
-      logo: <Heart className="w-8 h-8" />,
+      logo: 'mdi:heart-pulse',
       color: 'from-red-500 to-red-600',
       website: 'https://medcare.health',
       location: 'Toronto, Canada'
@@ -151,7 +151,7 @@ const DiscoverPage: React.FC = () => {
       features: ['Reputation-based Lending', 'Lower Collateral Requirements', 'Premium Trading Features', 'Governance Rights'],
       integrationLevel: 'deep',
       users: '125K+',
-      logo: <TrendingUp className="w-8 h-8" />,
+      logo: 'mdi:trending-up',
       color: 'from-green-500 to-green-600',
       website: 'https://algofi.org',
       launchDate: '2023-07-15'
@@ -164,7 +164,7 @@ const DiscoverPage: React.FC = () => {
       features: ['Verified Identity Badges', 'Reputation-based Reach', 'Trusted Content Curation', 'Community Governance'],
       integrationLevel: 'advanced',
       users: '89K+',
-      logo: <Users className="w-8 h-8" />,
+      logo: 'mdi:account-group',
       color: 'from-blue-500 to-blue-600',
       website: 'https://socialdao.app',
       launchDate: '2023-09-22'
@@ -177,7 +177,7 @@ const DiscoverPage: React.FC = () => {
       features: ['Skill-based Matchmaking', 'Tournament Access', 'Achievement Verification', 'Pro Player Recognition'],
       integrationLevel: 'advanced',
       users: '67K+',
-      logo: <GameController2 className="w-8 h-8" />,
+      logo: 'mdi:gamepad-variant',
       color: 'from-purple-500 to-purple-600',
       website: 'https://gameverse.gg',
       launchDate: '2023-11-10'
@@ -190,7 +190,7 @@ const DiscoverPage: React.FC = () => {
       features: ['Verified Seller Badges', 'Reputation-based Discounts', 'Trusted Buyer Program', 'Dispute Resolution'],
       integrationLevel: 'deep',
       users: '156K+',
-      logo: <ShoppingCart className="w-8 h-8" />,
+      logo: 'mdi:shopping',
       color: 'from-orange-500 to-orange-600',
       website: 'https://trustmarket.io',
       launchDate: '2023-08-05'
@@ -203,7 +203,7 @@ const DiscoverPage: React.FC = () => {
       features: ['Skill Verification', 'Reputation Matching', 'Escrow Protection', 'Performance Tracking'],
       integrationLevel: 'advanced',
       users: '43K+',
-      logo: <Briefcase className="w-8 h-8" />,
+      logo: 'mdi:briefcase-variant',
       color: 'from-indigo-500 to-indigo-600',
       website: 'https://workdao.org',
       launchDate: '2023-10-18'
@@ -216,7 +216,7 @@ const DiscoverPage: React.FC = () => {
       features: ['Reputation-based Limits', 'Cashback Rewards', 'DeFi Integration', 'Global Acceptance'],
       integrationLevel: 'basic',
       users: '34K+',
-      logo: <CreditCard className="w-8 h-8" />,
+      logo: 'mdi:credit-card',
       color: 'from-cyan-500 to-cyan-600',
       website: 'https://cryptocard.finance',
       launchDate: '2023-12-01'
@@ -231,7 +231,7 @@ const DiscoverPage: React.FC = () => {
       description: 'Strategic partnership for blockchain infrastructure and ecosystem development',
       benefits: ['Native Algorand Integration', 'Grant Funding', 'Technical Support', 'Marketing Collaboration'],
       status: 'active',
-      logo: <Zap className="w-8 h-8" />,
+      logo: 'mdi:lightning-bolt',
       color: 'from-orange-500 to-orange-600',
       website: 'https://algorand.foundation',
       announcedDate: '2023-01-15'
@@ -243,7 +243,7 @@ const DiscoverPage: React.FC = () => {
       description: 'Collaboration on verifiable credentials standards and interoperability protocols',
       benefits: ['Standards Development', 'Interoperability', 'Research Collaboration', 'Industry Recognition'],
       status: 'active',
-      logo: <Globe className="w-8 h-8" />,
+      logo: 'mdi:web',
       color: 'from-blue-500 to-blue-600',
       website: 'https://w3c.org',
       announcedDate: '2023-03-22'
@@ -255,7 +255,7 @@ const DiscoverPage: React.FC = () => {
       description: 'Cloud infrastructure partnership for enterprise identity solutions',
       benefits: ['Enterprise Integration', 'Cloud Infrastructure', 'Security Features', 'Global Reach'],
       status: 'development',
-      logo: <Building2 className="w-8 h-8" />,
+      logo: 'mdi:microsoft',
       color: 'from-cyan-500 to-cyan-600',
       website: 'https://azure.microsoft.com',
       announcedDate: '2023-11-08'
@@ -267,7 +267,7 @@ const DiscoverPage: React.FC = () => {
       description: 'Oracle integration for real-world data verification and cross-chain functionality',
       benefits: ['Oracle Integration', 'Cross-chain Support', 'Data Verification', 'DeFi Connectivity'],
       status: 'planned',
-      logo: <Lock className="w-8 h-8" />,
+      logo: 'mdi:link-variant',
       color: 'from-purple-500 to-purple-600',
       website: 'https://chainlink.com',
       announcedDate: '2024-01-12'
@@ -278,17 +278,17 @@ const DiscoverPage: React.FC = () => {
     switch (level) {
       case 'premium':
         return <div className="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
-          <Award className="w-3 h-3" />
+          <Icon icon="mdi:crown" className="w-3 h-3" />
           <span>Premium</span>
         </div>;
       case 'enhanced':
         return <div className="bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
-          <Shield className="w-3 h-3" />
+          <Icon icon="mdi:shield-check" className="w-3 h-3" />
           <span>Enhanced</span>
         </div>;
       case 'basic':
         return <div className="bg-gray-500/20 text-gray-400 px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
-          <CheckCircle className="w-3 h-3" />
+          <Icon icon="mdi:check-circle" className="w-3 h-3" />
           <span>Basic</span>
         </div>;
       default:
@@ -313,17 +313,17 @@ const DiscoverPage: React.FC = () => {
     switch (status) {
       case 'active':
         return <div className="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
-          <CheckCircle className="w-3 h-3" />
+          <Icon icon="mdi:check-circle" className="w-3 h-3" />
           <span>Active</span>
         </div>;
       case 'development':
         return <div className="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
-          <Clock className="w-3 h-3" />
+          <Icon icon="mdi:clock" className="w-3 h-3" />
           <span>In Development</span>
         </div>;
       case 'planned':
         return <div className="bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
-          <Eye className="w-3 h-3" />
+          <Icon icon="mdi:eye" className="w-3 h-3" />
           <span>Planned</span>
         </div>;
       default:
@@ -360,7 +360,7 @@ const DiscoverPage: React.FC = () => {
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-start space-x-4">
               <div className={`p-3 rounded-xl bg-gradient-to-br ${issuer.color}`}>
-                {issuer.logo}
+                <Icon icon={issuer.logo} className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-1">
@@ -370,11 +370,11 @@ const DiscoverPage: React.FC = () => {
                 <p className="text-sm text-dark-text-secondary mb-2">{issuer.description}</p>
                 <div className="flex items-center space-x-4 text-xs text-dark-text-secondary">
                   <div className="flex items-center space-x-1">
-                    <MapPin className="w-3 h-3" />
+                    <Icon icon="mdi:map-marker" className="w-3 h-3" />
                     <span>{issuer.location}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <Calendar className="w-3 h-3" />
+                    <Icon icon="mdi:calendar" className="w-3 h-3" />
                     <span>Since {formatDate(issuer.memberSince)}</span>
                   </div>
                 </div>
@@ -382,7 +382,7 @@ const DiscoverPage: React.FC = () => {
             </div>
             <div className="text-right">
               <div className="flex items-center space-x-1 mb-1">
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                <Icon icon="mdi:star" className="w-4 h-4 text-yellow-500" />
                 <span className="text-dark-text font-medium">{issuer.rating}</span>
               </div>
               <div className="text-xs text-dark-text-secondary">
@@ -408,7 +408,7 @@ const DiscoverPage: React.FC = () => {
             </button>
             {issuer.website && (
               <button className="flex items-center space-x-1 text-dark-text-secondary hover:text-dark-text transition-colors text-sm">
-                <ExternalLink className="w-3 h-3" />
+                <Icon icon="mdi:open-in-new" className="w-3 h-3" />
                 <span>Visit Website</span>
               </button>
             )}
@@ -430,7 +430,7 @@ const DiscoverPage: React.FC = () => {
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-start space-x-4">
               <div className={`p-3 rounded-xl bg-gradient-to-br ${platform.color}`}>
-                {platform.logo}
+                <Icon icon={platform.logo} className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-1">
@@ -440,11 +440,11 @@ const DiscoverPage: React.FC = () => {
                 <p className="text-sm text-dark-text-secondary mb-2">{platform.description}</p>
                 <div className="flex items-center space-x-4 text-xs text-dark-text-secondary">
                   <div className="flex items-center space-x-1">
-                    <Users className="w-3 h-3" />
+                    <Icon icon="mdi:account-group" className="w-3 h-3" />
                     <span>{platform.users} users</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <Calendar className="w-3 h-3" />
+                    <Icon icon="mdi:calendar" className="w-3 h-3" />
                     <span>Launched {formatDate(platform.launchDate)}</span>
                   </div>
                 </div>
@@ -457,7 +457,7 @@ const DiscoverPage: React.FC = () => {
             <div className="space-y-1">
               {platform.features.map((feature, index) => (
                 <div key={index} className="flex items-center space-x-2 text-sm text-dark-text-secondary">
-                  <CheckCircle className="w-3 h-3 text-green-500" />
+                  <Icon icon="mdi:check-circle" className="w-3 h-3 text-green-500" />
                   <span>{feature}</span>
                 </div>
               ))}
@@ -467,11 +467,11 @@ const DiscoverPage: React.FC = () => {
           <div className="flex items-center justify-between">
             <button className="bg-gradient-to-r from-primary-red to-primary-red-dark text-white px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity flex items-center space-x-2">
               <span>Connect Account</span>
-              <ArrowRight className="w-4 h-4" />
+              <Icon icon="mdi:arrow-right" className="w-4 h-4" />
             </button>
             {platform.website && (
               <button className="flex items-center space-x-1 text-dark-text-secondary hover:text-dark-text transition-colors text-sm">
-                <ExternalLink className="w-3 h-3" />
+                <Icon icon="mdi:open-in-new" className="w-3 h-3" />
                 <span>Visit Platform</span>
               </button>
             )}
@@ -493,7 +493,7 @@ const DiscoverPage: React.FC = () => {
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-start space-x-4">
               <div className={`p-3 rounded-xl bg-gradient-to-br ${partnership.color}`}>
-                {partnership.logo}
+                <Icon icon={partnership.logo} className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-1">
@@ -503,11 +503,11 @@ const DiscoverPage: React.FC = () => {
                 <p className="text-sm text-dark-text-secondary mb-2">{partnership.description}</p>
                 <div className="flex items-center space-x-4 text-xs text-dark-text-secondary">
                   <div className="flex items-center space-x-1">
-                    <Handshake className="w-3 h-3" />
+                    <Icon icon="mdi:handshake" className="w-3 h-3" />
                     <span className="capitalize">{partnership.type} Partnership</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <Calendar className="w-3 h-3" />
+                    <Icon icon="mdi:calendar" className="w-3 h-3" />
                     <span>Announced {formatDate(partnership.announcedDate)}</span>
                   </div>
                 </div>
@@ -520,7 +520,7 @@ const DiscoverPage: React.FC = () => {
             <div className="space-y-1">
               {partnership.benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center space-x-2 text-sm text-dark-text-secondary">
-                  <CheckCircle className="w-3 h-3 text-green-500" />
+                  <Icon icon="mdi:check-circle" className="w-3 h-3 text-green-500" />
                   <span>{benefit}</span>
                 </div>
               ))}
@@ -533,7 +533,7 @@ const DiscoverPage: React.FC = () => {
             </button>
             {partnership.website && (
               <button className="flex items-center space-x-1 text-dark-text-secondary hover:text-dark-text transition-colors text-sm">
-                <ExternalLink className="w-3 h-3" />
+                <Icon icon="mdi:open-in-new" className="w-3 h-3" />
                 <span>Visit Website</span>
               </button>
             )}
@@ -544,9 +544,9 @@ const DiscoverPage: React.FC = () => {
   );
 
   const navigationItems = [
-    { id: 'issuers', label: 'Trusted Issuers', icon: <Shield className="w-5 h-5" /> },
-    { id: 'platforms', label: 'Integrated Platforms', icon: <Globe className="w-5 h-5" /> },
-    { id: 'partnerships', label: 'Partnerships', icon: <Handshake className="w-5 h-5" /> }
+    { id: 'issuers', label: 'Trusted Issuers', icon: 'mdi:shield-check' },
+    { id: 'platforms', label: 'Integrated Platforms', icon: 'mdi:web' },
+    { id: 'partnerships', label: 'Partnerships', icon: 'mdi:handshake' }
   ];
 
   return (
@@ -559,7 +559,7 @@ const DiscoverPage: React.FC = () => {
       {/* Search Bar */}
       <div className="bg-dark-card border-b border-dark-border px-4 py-3">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-dark-text-secondary" />
+          <Icon icon="mdi:magnify" className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-dark-text-secondary" />
           <input
             type="text"
             placeholder="Search issuers, platforms, or partnerships..."
@@ -583,7 +583,7 @@ const DiscoverPage: React.FC = () => {
                   : 'text-dark-text-secondary hover:text-dark-text hover:bg-dark-bg'
               }`}
             >
-              {item.icon}
+              <Icon icon={item.icon} className="w-5 h-5" />
               <span>{item.label}</span>
             </button>
           ))}

@@ -1,27 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Star, 
-  Shield, 
-  Award, 
-  Users, 
-  TrendingUp, 
-  Eye, 
-  EyeOff, 
-  QrCode, 
-  Download,
-  ChevronRight,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Coins,
-  User,
-  Globe,
-  Lock,
-  ArrowLeft,
-  ExternalLink,
-  Plus,
-  Sparkles
-} from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { useAlgorand, useReputation } from '../hooks/useAlgorand';
 
 const ReputationPage: React.FC = () => {
@@ -147,7 +125,7 @@ const ReputationPage: React.FC = () => {
     return (
       <div className="min-h-screen bg-dark-bg pb-20 flex items-center justify-center">
         <div className="text-center space-y-4">
-          <Star className="w-16 h-16 text-primary-red mx-auto animate-pulse-glow" />
+          <Icon icon="mdi:star" className="w-16 h-16 text-primary-red mx-auto animate-pulse-glow" />
           <h2 className="text-xl font-semibold text-dark-text">Connect Your Wallet</h2>
           <p className="text-dark-text-secondary">Please connect your Algorand wallet to view your reputation</p>
         </div>
@@ -160,11 +138,11 @@ const ReputationPage: React.FC = () => {
       {/* Reputation Score Card */}
       <div className="bg-gradient-to-br from-dark-card to-dark-bg border border-dark-border rounded-2xl p-6 text-center animate-fade-in-scale relative overflow-hidden">
         <div className="absolute top-4 right-4 animate-sparkle">
-          <Sparkles className="w-4 h-4 text-primary-red opacity-60" />
+          <Icon icon="mdi:sparkles" className="w-4 h-4 text-primary-red opacity-60" />
         </div>
         
         <div className="w-24 h-24 bg-gradient-to-br from-primary-red to-primary-red-dark rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
-          <Star className="w-12 h-12 text-white" />
+          <Icon icon="mdi:star" className="w-12 h-12 text-white" />
         </div>
         
         <h3 className="text-3xl font-bold text-primary-red mb-2 animate-heartbeat">
@@ -190,17 +168,17 @@ const ReputationPage: React.FC = () => {
         <h3 className="text-lg font-semibold text-dark-text mb-4">Score Breakdown</h3>
         <div className="space-y-4 stagger-animation">
           {[
-            { category: 'Verified Credentials', score: reputation?.credentialScore || 25, maxScore: 30, color: 'from-blue-500 to-blue-600', icon: <Shield className="w-5 h-5" /> },
-            { category: 'Community Attestations', score: reputation?.attestationScore || 20, maxScore: 25, color: 'from-green-500 to-green-600', icon: <Users className="w-5 h-5" /> },
-            { category: 'Staking History', score: reputation?.stakingScore || 18, maxScore: 20, color: 'from-purple-500 to-purple-600', icon: <Coins className="w-5 h-5" /> },
-            { category: 'Network Participation', score: reputation?.participationScore || 15, maxScore: 15, color: 'from-orange-500 to-orange-600', icon: <TrendingUp className="w-5 h-5" /> },
-            { category: 'Time-based Trust', score: reputation?.timeScore || 7, maxScore: 10, color: 'from-indigo-500 to-indigo-600', icon: <Clock className="w-5 h-5" /> }
+            { category: 'Verified Credentials', score: reputation?.credentialScore || 25, maxScore: 30, color: 'from-blue-500 to-blue-600', icon: 'mdi:shield-check' },
+            { category: 'Community Attestations', score: reputation?.attestationScore || 20, maxScore: 25, color: 'from-green-500 to-green-600', icon: 'mdi:account-group' },
+            { category: 'Staking History', score: reputation?.stakingScore || 18, maxScore: 20, color: 'from-purple-500 to-purple-600', icon: 'mdi:coins' },
+            { category: 'Network Participation', score: reputation?.participationScore || 15, maxScore: 15, color: 'from-orange-500 to-orange-600', icon: 'mdi:trending-up' },
+            { category: 'Time-based Trust', score: reputation?.timeScore || 7, maxScore: 10, color: 'from-indigo-500 to-indigo-600', icon: 'mdi:clock' }
           ].map((item, index) => (
             <div key={index} className="space-y-2 hover-lift transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <div className={`p-2 rounded-lg bg-gradient-to-br ${item.color}`}>
-                    {item.icon}
+                    <Icon icon={item.icon} className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <p className="text-dark-text font-medium">{item.category}</p>
@@ -247,7 +225,7 @@ const ReputationPage: React.FC = () => {
           onClick={() => setShowAttestationModal(true)}
           className="bg-gradient-to-r from-primary-red to-primary-red-dark text-white px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity flex items-center space-x-2"
         >
-          <Plus className="w-4 h-4" />
+          <Icon icon="mdi:plus" className="w-4 h-4" />
           <span>Create Attestation</span>
         </button>
       </div>
@@ -259,7 +237,7 @@ const ReputationPage: React.FC = () => {
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-1">
                   <h4 className="text-dark-text font-medium">{attestation.attestationType}</h4>
-                  {attestation.verified && <CheckCircle className="w-4 h-4 text-green-500 animate-bounce-gentle" />}
+                  {attestation.verified && <Icon icon="mdi:check-circle" className="w-4 h-4 text-green-500 animate-bounce-gentle" />}
                 </div>
                 <p className="text-sm text-dark-text-secondary mb-2">{attestation.description}</p>
                 <p className="text-sm text-dark-text-secondary">
@@ -275,7 +253,7 @@ const ReputationPage: React.FC = () => {
             <div className="flex items-center justify-between text-xs text-dark-text-secondary">
               <span>{formatDate(attestation.timestamp)}</span>
               <button className="flex items-center space-x-1 hover:text-dark-text transition-colors">
-                <ExternalLink className="w-3 h-3" />
+                <Icon icon="mdi:open-in-new" className="w-3 h-3" />
                 <span>View on chain</span>
               </button>
             </div>
@@ -296,7 +274,7 @@ const ReputationPage: React.FC = () => {
         {mockBadges.map((badge, index) => (
           <div key={badge.id} className="bg-dark-card border border-dark-border rounded-xl p-4 text-center hover-lift transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
             <div className={`w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-br ${getRarityColor(badge.rarity)} flex items-center justify-center animate-pulse-glow`}>
-              <Award className="w-8 h-8 text-white" />
+              <Icon icon="mdi:award" className="w-8 h-8 text-white" />
             </div>
             <h4 className="text-dark-text font-medium mb-1">{badge.name}</h4>
             <p className="text-xs text-dark-text-secondary mb-2">{badge.description}</p>
@@ -333,7 +311,10 @@ const ReputationPage: React.FC = () => {
           <div key={key} className="bg-dark-card border border-dark-border rounded-xl p-4 hover-lift transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                {value ? <Eye className="w-5 h-5 text-green-500" /> : <EyeOff className="w-5 h-5 text-gray-500" />}
+                {value ? 
+                  <Icon icon="mdi:eye" className="w-5 h-5 text-green-500" /> : 
+                  <Icon icon="mdi:eye-off" className="w-5 h-5 text-gray-500" />
+                }
                 <div>
                   <p className="text-dark-text font-medium">
                     {key === 'showScore' ? 'Reputation Score' :
@@ -366,7 +347,7 @@ const ReputationPage: React.FC = () => {
 
       <div className="bg-dark-card border border-dark-border rounded-xl p-4">
         <div className="flex items-center space-x-3 mb-3">
-          <Globe className="w-5 h-5 text-primary-red" />
+          <Icon icon="mdi:web" className="w-5 h-5 text-primary-red" />
           <h4 className="text-dark-text font-medium">Public Profile Preview</h4>
         </div>
         <p className="text-sm text-dark-text-secondary mb-3">
@@ -390,7 +371,7 @@ const ReputationPage: React.FC = () => {
 
       <div className="bg-dark-card border border-dark-border rounded-xl p-6 text-center animate-fade-in-scale">
         <div className="w-16 h-16 bg-gradient-to-br from-primary-red to-primary-red-dark rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
-          <Shield className="w-8 h-8 text-white" />
+          <Icon icon="mdi:shield-check" className="w-8 h-8 text-white" />
         </div>
         <h4 className="text-xl font-semibold text-dark-text mb-2">
           Reputation Score: {reputation?.totalScore || 85}
@@ -401,14 +382,14 @@ const ReputationPage: React.FC = () => {
           onClick={() => setShowProofQR(!showProofQR)}
           className="w-full bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-3 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity mb-3"
         >
-          <QrCode className="w-5 h-5" />
+          <Icon icon="mdi:qrcode" className="w-5 h-5" />
           <span>{showProofQR ? 'Hide Proof' : 'Generate Proof'}</span>
         </button>
 
         {showProofQR && (
           <div className="bg-white p-6 rounded-xl mb-4 animate-fade-in-scale">
             <div className="w-48 h-48 bg-gray-200 rounded-lg mx-auto mb-4 flex items-center justify-center animate-pulse-glow">
-              <QrCode className="w-16 h-16 text-gray-400 animate-float" />
+              <Icon icon="mdi:qrcode" className="w-16 h-16 text-gray-400 animate-float" />
             </div>
             <p className="text-gray-600 text-sm">Scan to verify reputation proof</p>
             <div className="mt-2 text-xs text-gray-500 font-mono">
@@ -418,7 +399,7 @@ const ReputationPage: React.FC = () => {
         )}
 
         <button className="w-full bg-dark-bg border border-dark-border text-dark-text py-3 rounded-xl flex items-center justify-center space-x-2 hover:border-primary-red-light/30 transition-colors">
-          <Download className="w-4 h-4" />
+          <Icon icon="mdi:download" className="w-4 h-4" />
           <span>Download Proof Certificate</span>
         </button>
       </div>
@@ -448,11 +429,11 @@ const ReputationPage: React.FC = () => {
   );
 
   const navigationItems = [
-    { id: 'overview', label: 'Overview', icon: <Star className="w-5 h-5" /> },
-    { id: 'attestations', label: 'Attestations', icon: <Users className="w-5 h-5" /> },
-    { id: 'badges', label: 'Badges', icon: <Award className="w-5 h-5" /> },
-    { id: 'profile', label: 'Public Profile', icon: <Globe className="w-5 h-5" /> },
-    { id: 'proof', label: 'Prove Reputation', icon: <Shield className="w-5 h-5" /> }
+    { id: 'overview', label: 'Overview', icon: 'mdi:star' },
+    { id: 'attestations', label: 'Attestations', icon: 'mdi:account-group' },
+    { id: 'badges', label: 'Badges', icon: 'mdi:award' },
+    { id: 'profile', label: 'Public Profile', icon: 'mdi:web' },
+    { id: 'proof', label: 'Prove Reputation', icon: 'mdi:shield-check' }
   ];
 
   return (
@@ -476,7 +457,7 @@ const ReputationPage: React.FC = () => {
               }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {item.icon}
+              <Icon icon={item.icon} className="w-5 h-5" />
               <span>{item.label}</span>
             </button>
           ))}

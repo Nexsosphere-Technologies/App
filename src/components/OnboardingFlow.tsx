@@ -1,40 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Shield, 
-  Key, 
-  Eye, 
-  EyeOff, 
-  Copy, 
-  Download, 
-  CheckCircle, 
-  ArrowRight, 
-  ArrowLeft, 
-  Fingerprint, 
-  Smartphone, 
-  User, 
-  Globe, 
-  Play, 
-  Pause, 
-  Volume2, 
-  VolumeX,
-  Upload,
-  AlertTriangle,
-  Lock,
-  Unlock,
-  Star,
-  Award,
-  Users,
-  TrendingUp,
-  Coins,
-  RefreshCw,
-  Camera,
-  MapPin,
-  Link,
-  Twitter,
-  Linkedin,
-  Github,
-  ExternalLink
-} from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface OnboardingStep {
   id: string;
@@ -222,7 +187,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
     <div className="text-center space-y-8">
       <div className="space-y-4">
         <div className="w-24 h-24 bg-gradient-to-br from-primary-red to-primary-red-dark rounded-3xl flex items-center justify-center mx-auto">
-          <Shield className="w-12 h-12 text-white" />
+          <Icon icon="mdi:shield-check" className="w-12 h-12 text-white" />
         </div>
         <h1 className="text-3xl font-bold text-dark-text">Welcome to NexDentify</h1>
         <p className="text-dark-text-secondary text-lg max-w-md mx-auto">
@@ -235,7 +200,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
           <div className="bg-dark-card border border-dark-border rounded-xl p-6 text-left">
             <div className="flex items-start space-x-4">
               <div className="p-3 bg-blue-500/20 rounded-lg flex-shrink-0">
-                <Key className="w-6 h-6 text-blue-500" />
+                <Icon icon="mdi:key" className="w-6 h-6 text-blue-500" />
               </div>
               <div>
                 <h3 className="text-dark-text font-semibold mb-2">Own Your Identity</h3>
@@ -249,7 +214,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
           <div className="bg-dark-card border border-dark-border rounded-xl p-6 text-left">
             <div className="flex items-start space-x-4">
               <div className="p-3 bg-green-500/20 rounded-lg flex-shrink-0">
-                <Star className="w-6 h-6 text-green-500" />
+                <Icon icon="mdi:star" className="w-6 h-6 text-green-500" />
               </div>
               <div>
                 <h3 className="text-dark-text font-semibold mb-2">Build Reputation</h3>
@@ -263,7 +228,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
           <div className="bg-dark-card border border-dark-border rounded-xl p-6 text-left">
             <div className="flex items-start space-x-4">
               <div className="p-3 bg-purple-500/20 rounded-lg flex-shrink-0">
-                <Coins className="w-6 h-6 text-purple-500" />
+                <Icon icon="mdi:coins" className="w-6 h-6 text-purple-500" />
               </div>
               <div>
                 <h3 className="text-dark-text font-semibold mb-2">Earn Rewards</h3>
@@ -299,7 +264,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
     <div className="space-y-6">
       <div className="text-center space-y-4">
         <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto">
-          <Upload className="w-8 h-8 text-white" />
+          <Icon icon="mdi:upload" className="w-8 h-8 text-white" />
         </div>
         <h2 className="text-2xl font-bold text-dark-text">Import Existing DID</h2>
         <p className="text-dark-text-secondary">
@@ -309,7 +274,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
 
       <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4">
         <div className="flex items-start space-x-3">
-          <AlertTriangle className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
+          <Icon icon="mdi:alert-triangle" className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
           <div>
             <p className="text-yellow-400 font-medium">Security Warning</p>
             <p className="text-yellow-400/80 text-sm">
@@ -395,7 +360,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
     <div className="space-y-6">
       <div className="text-center space-y-4">
         <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto">
-          <Lock className="w-8 h-8 text-white" />
+          <Icon icon="mdi:lock" className="w-8 h-8 text-white" />
         </div>
         <h2 className="text-2xl font-bold text-dark-text">Secure Your Wallet</h2>
         <p className="text-dark-text-secondary">
@@ -405,7 +370,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
 
       <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
         <div className="flex items-start space-x-3">
-          <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+          <Icon icon="mdi:alert-triangle" className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
           <div>
             <p className="text-red-400 font-medium">Critical Security Information</p>
             <ul className="text-red-400/80 text-sm mt-1 space-y-1">
@@ -425,7 +390,10 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
             onClick={() => setShowSeedPhrase(!showSeedPhrase)}
             className="text-primary-red hover:text-primary-red-light transition-colors"
           >
-            {showSeedPhrase ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+            {showSeedPhrase ? 
+              <Icon icon="mdi:eye-off" className="w-5 h-5" /> : 
+              <Icon icon="mdi:eye" className="w-5 h-5" />
+            }
           </button>
         </div>
 
@@ -447,21 +415,21 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
                 onClick={() => copyToClipboard(walletData?.seedPhrase || '')}
                 className="flex-1 bg-dark-bg border border-dark-border rounded-lg py-3 text-dark-text hover:border-primary-red-light/30 transition-colors flex items-center justify-center space-x-2"
               >
-                <Copy className="w-4 h-4" />
+                <Icon icon="mdi:content-copy" className="w-4 h-4" />
                 <span>Copy</span>
               </button>
               <button
                 onClick={downloadSeedPhrase}
                 className="flex-1 bg-dark-bg border border-dark-border rounded-lg py-3 text-dark-text hover:border-primary-red-light/30 transition-colors flex items-center justify-center space-x-2"
               >
-                <Download className="w-4 h-4" />
+                <Icon icon="mdi:download" className="w-4 h-4" />
                 <span>Download</span>
               </button>
             </div>
           </div>
         ) : (
           <div className="bg-dark-bg border border-dark-border rounded-lg p-8 text-center">
-            <Eye className="w-8 h-8 text-dark-text-secondary mx-auto mb-2" />
+            <Icon icon="mdi:eye" className="w-8 h-8 text-dark-text-secondary mx-auto mb-2" />
             <p className="text-dark-text-secondary">Click the eye icon to reveal your seed phrase</p>
           </div>
         )}
@@ -523,7 +491,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
       <div className="space-y-6">
         <div className="text-center space-y-4">
           <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto">
-            <CheckCircle className="w-8 h-8 text-white" />
+            <Icon icon="mdi:check-circle" className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-2xl font-bold text-dark-text">Verify Your Backup</h2>
           <p className="text-dark-text-secondary">
@@ -576,7 +544,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
     <div className="space-y-6">
       <div className="text-center space-y-4">
         <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto">
-          <Fingerprint className="w-8 h-8 text-white" />
+          <Icon icon="mdi:fingerprint" className="w-8 h-8 text-white" />
         </div>
         <h2 className="text-2xl font-bold text-dark-text">Secure Access</h2>
         <p className="text-dark-text-secondary">
@@ -591,7 +559,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <Fingerprint className="w-5 h-5 text-blue-500" />
+                <Icon icon="mdi:fingerprint" className="w-5 h-5 text-blue-500" />
                 <div>
                   <p className="text-dark-text font-medium">Fingerprint</p>
                   <p className="text-sm text-dark-text-secondary">Use your fingerprint to unlock</p>
@@ -616,7 +584,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
 
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <Smartphone className="w-5 h-5 text-green-500" />
+                <Icon icon="mdi:cellphone" className="w-5 h-5 text-green-500" />
                 <div>
                   <p className="text-dark-text font-medium">Face ID</p>
                   <p className="text-sm text-dark-text-secondary">Use facial recognition to unlock</p>
@@ -704,7 +672,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
     <div className="space-y-6">
       <div className="text-center space-y-4">
         <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto">
-          <User className="w-8 h-8 text-white" />
+          <Icon icon="mdi:account" className="w-8 h-8 text-white" />
         </div>
         <h2 className="text-2xl font-bold text-dark-text">Create Your Profile</h2>
         <p className="text-dark-text-secondary">
@@ -720,7 +688,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
               {profileData.displayName ? profileData.displayName.split(' ').map(n => n[0]).join('').toUpperCase() : 'U'}
             </div>
             <button className="absolute -bottom-1 -right-1 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-colors">
-              <Camera className="w-4 h-4" />
+              <Icon icon="mdi:camera" className="w-4 h-4" />
             </button>
           </div>
           <p className="text-sm text-dark-text-secondary mt-2">Upload profile picture</p>
@@ -761,7 +729,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
                 Location
               </label>
               <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-dark-text-secondary" />
+                <Icon icon="mdi:map-marker" className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-dark-text-secondary" />
                 <input
                   type="text"
                   value={profileData.location}
@@ -783,7 +751,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
                 Website
               </label>
               <div className="relative">
-                <Link className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-dark-text-secondary" />
+                <Icon icon="mdi:link" className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-dark-text-secondary" />
                 <input
                   type="url"
                   value={profileData.website}
@@ -800,7 +768,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
                   Twitter
                 </label>
                 <div className="relative">
-                  <Twitter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-dark-text-secondary" />
+                  <Icon icon="mdi:twitter" className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-dark-text-secondary" />
                   <input
                     type="text"
                     value={profileData.twitter}
@@ -816,7 +784,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
                   LinkedIn
                 </label>
                 <div className="relative">
-                  <Linkedin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-dark-text-secondary" />
+                  <Icon icon="mdi:linkedin" className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-dark-text-secondary" />
                   <input
                     type="text"
                     value={profileData.linkedin}
@@ -894,7 +862,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
       <div className="space-y-6">
         <div className="text-center space-y-4">
           <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto">
-            <Play className="w-8 h-8 text-white" />
+            <Icon icon="mdi:play" className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-2xl font-bold text-dark-text">Learn NexDentify</h2>
           <p className="text-dark-text-secondary">
@@ -908,7 +876,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
             {/* Video Placeholder */}
             <div className="text-center space-y-4">
               <div className="w-20 h-20 bg-gradient-to-br from-primary-red to-primary-red-dark rounded-full flex items-center justify-center mx-auto">
-                <User className="w-10 h-10 text-white" />
+                <Icon icon="mdi:account" className="w-10 h-10 text-white" />
               </div>
               <div>
                 <h3 className="text-white font-semibold text-lg">AI Guide - Alex</h3>
@@ -922,9 +890,9 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
               className="absolute inset-0 bg-black/20 hover:bg-black/30 transition-colors flex items-center justify-center"
             >
               {tutorialVideoPlaying ? (
-                <Pause className="w-16 h-16 text-white" />
+                <Icon icon="mdi:pause" className="w-16 h-16 text-white" />
               ) : (
-                <Play className="w-16 h-16 text-white" />
+                <Icon icon="mdi:play" className="w-16 h-16 text-white" />
               )}
             </button>
           </div>
@@ -946,14 +914,20 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
                   onClick={() => setTutorialVideoPlaying(!tutorialVideoPlaying)}
                   className="text-dark-text hover:text-primary-red transition-colors"
                 >
-                  {tutorialVideoPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+                  {tutorialVideoPlaying ? 
+                    <Icon icon="mdi:pause" className="w-5 h-5" /> : 
+                    <Icon icon="mdi:play" className="w-5 h-5" />
+                  }
                 </button>
                 
                 <button
                   onClick={() => setTutorialMuted(!tutorialMuted)}
                   className="text-dark-text hover:text-primary-red transition-colors"
                 >
-                  {tutorialMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                  {tutorialMuted ? 
+                    <Icon icon="mdi:volume-off" className="w-5 h-5" /> : 
+                    <Icon icon="mdi:volume-high" className="w-5 h-5" />
+                  }
                 </button>
 
                 <span className="text-sm text-dark-text-secondary">
@@ -962,7 +936,7 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
               </div>
 
               <button className="text-dark-text-secondary hover:text-dark-text transition-colors">
-                <ExternalLink className="w-5 h-5" />
+                <Icon icon="mdi:open-in-new" className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -973,23 +947,23 @@ const OnboardingFlow: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
           <h3 className="text-dark-text font-semibold mb-4">What You'll Learn</h3>
           <div className="space-y-3">
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-green-500" />
+              <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-500" />
               <span className="text-dark-text">Understanding Decentralized Identity (DIDs)</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-green-500" />
+              <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-500" />
               <span className="text-dark-text">Managing Verifiable Credentials (VCs)</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-green-500" />
+              <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-500" />
               <span className="text-dark-text">Building and Maintaining Reputation</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-green-500" />
+              <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-500" />
               <span className="text-dark-text">Staking NEXDEN Tokens</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-green-500" />
+              <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-500" />
               <span className="text-dark-text">Connecting with Trusted Platforms</span>
             </div>
           </div>

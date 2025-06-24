@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, GraduationCap, Briefcase, Shield, Award, CheckCircle, Clock, X, QrCode, ArrowLeft, ExternalLink, Sparkles, Zap, Upload, Download } from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { useAlgorand, useDID } from '../hooks/useAlgorand';
 import { vcService } from '../services/algorand';
 
@@ -10,7 +10,7 @@ interface Credential {
   issuer: string;
   status: 'verified' | 'pending' | 'revoked';
   expiry?: string;
-  icon: React.ReactNode;
+  icon: string;
   color: string;
   description: string;
   claims: { [key: string]: string };
@@ -67,10 +67,10 @@ const IdentityPage: React.FC = () => {
 
   const getCredentialIcon = (type: string) => {
     switch (type) {
-      case 'education': return <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />;
-      case 'employment': return <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />;
-      case 'health': return <Shield className="w-5 h-5 sm:w-6 sm:h-6" />;
-      default: return <Award className="w-5 h-5 sm:w-6 sm:h-6" />;
+      case 'education': return 'mdi:school';
+      case 'employment': return 'mdi:briefcase';
+      case 'health': return 'mdi:shield-check';
+      default: return 'mdi:award';
     }
   };
 
@@ -91,7 +91,7 @@ const IdentityPage: React.FC = () => {
       issuer: 'Massachusetts Institute of Technology',
       status: 'verified',
       expiry: '2028-05-15',
-      icon: <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />,
+      icon: 'mdi:school',
       color: 'from-blue-500 to-blue-600',
       description: 'Bachelor of Science in Computer Science',
       claims: {
@@ -108,7 +108,7 @@ const IdentityPage: React.FC = () => {
       title: 'Employment Verification',
       issuer: 'TechCorp Solutions',
       status: 'verified',
-      icon: <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />,
+      icon: 'mdi:briefcase',
       color: 'from-green-500 to-green-600',
       description: 'Senior Software Engineer',
       claims: {
@@ -213,11 +213,11 @@ const IdentityPage: React.FC = () => {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'verified':
-        return <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 animate-bounce-gentle" />;
+        return <Icon icon="mdi:check-circle" className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 animate-bounce-gentle" />;
       case 'pending':
-        return <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-500 animate-pulse" />;
+        return <Icon icon="mdi:clock" className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-500 animate-pulse" />;
       case 'revoked':
-        return <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 animate-shake" />;
+        return <Icon icon="mdi:close" className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 animate-shake" />;
       default:
         return null;
     }
@@ -236,7 +236,7 @@ const IdentityPage: React.FC = () => {
     return (
       <div className="min-h-screen bg-dark-bg pb-20 flex items-center justify-center">
         <div className="text-center space-y-4">
-          <Shield className="w-16 h-16 text-primary-red mx-auto animate-pulse-glow" />
+          <Icon icon="mdi:shield-check" className="w-16 h-16 text-primary-red mx-auto animate-pulse-glow" />
           <h2 className="text-xl font-semibold text-dark-text">Connect Your Wallet</h2>
           <p className="text-dark-text-secondary">Please connect your Algorand wallet to manage your identity</p>
         </div>
@@ -256,7 +256,7 @@ const IdentityPage: React.FC = () => {
             }}
             className="text-dark-text-secondary hover:text-dark-text transition-all duration-300 hover-scale"
           >
-            <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            <Icon icon="mdi:arrow-left" className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
           <h1 className="text-lg sm:text-xl font-semibold text-dark-text">Credential Details</h1>
         </div>
@@ -265,14 +265,14 @@ const IdentityPage: React.FC = () => {
           {/* Credential Header */}
           <div className="text-center space-y-3 sm:space-y-4 animate-fade-in-scale relative">
             <div className="absolute -top-2 -right-2 animate-sparkle">
-              <Sparkles className="w-4 h-4 text-primary-red opacity-60" />
+              <Icon icon="mdi:sparkles" className="w-4 h-4 text-primary-red opacity-60" />
             </div>
             <div className="absolute -top-4 -left-2 animate-sparkle" style={{ animationDelay: '0.5s' }}>
-              <Zap className="w-3 h-3 text-blue-400 opacity-40" />
+              <Icon icon="mdi:lightning-bolt" className="w-3 h-3 text-blue-400 opacity-40" />
             </div>
 
             <div className={`inline-flex p-3 sm:p-4 rounded-2xl bg-gradient-to-br ${selectedCredential.color} animate-pulse-glow hover-scale transition-transform duration-300`}>
-              {selectedCredential.icon}
+              <Icon icon={selectedCredential.icon} className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div>
               <h2 className="text-xl sm:text-2xl font-bold text-dark-text mb-2">
@@ -288,7 +288,7 @@ const IdentityPage: React.FC = () => {
           <div className="bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4 hover-lift transition-all duration-300">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dark-bg rounded-lg flex items-center justify-center flex-shrink-0 animate-float">
-                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-primary-red" />
+                <Icon icon="mdi:shield-check" className="w-5 h-5 sm:w-6 sm:h-6 text-primary-red" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs sm:text-sm text-dark-text-secondary">Issued by</p>
@@ -308,7 +308,7 @@ const IdentityPage: React.FC = () => {
               onClick={() => handlePresentCredential(selectedCredential)}
               className="w-full bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-3 sm:py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 transition-all duration-300 hover-lift hover-glow btn-ripple animate-pulse-glow"
             >
-              <QrCode className="w-4 h-4 sm:w-5 sm:h-5" />
+              <Icon icon="mdi:qrcode" className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="text-sm sm:text-base">
                 {showQRCode ? 'Hide QR Code' : 'Present Credential'}
               </span>
@@ -319,7 +319,7 @@ const IdentityPage: React.FC = () => {
           {showQRCode && (
             <div className="bg-white p-4 sm:p-6 rounded-xl text-center animate-fade-in-scale hover-lift transition-all duration-300">
               <div className="w-40 h-40 sm:w-48 sm:h-48 bg-gray-200 rounded-lg mx-auto mb-3 sm:mb-4 flex items-center justify-center animate-pulse-glow">
-                <QrCode className="w-12 h-12 sm:w-16 sm:h-16 text-gray-400 animate-float" />
+                <Icon icon="mdi:qrcode" className="w-12 h-12 sm:w-16 sm:h-16 text-gray-400 animate-float" />
               </div>
               <p className="text-gray-600 text-xs sm:text-sm">Scan this QR code to verify credential</p>
               <div className="mt-3 text-xs text-gray-500 font-mono">
@@ -397,13 +397,13 @@ const IdentityPage: React.FC = () => {
             className="text-blue-500 hover:text-blue-400 transition-all duration-300 hover-scale"
             title="Request Credential"
           >
-            <Upload className="w-5 h-5 sm:w-6 sm:h-6" />
+            <Icon icon="mdi:upload" className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
           <button 
             onClick={() => setShowCreateDID(true)}
             className="text-primary-red hover:text-primary-red-light transition-all duration-300 hover-scale animate-bounce-gentle"
           >
-            <Plus className="w-5 h-5 sm:w-6 sm:h-6" />
+            <Icon icon="mdi:plus" className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
       </div>
@@ -423,7 +423,7 @@ const IdentityPage: React.FC = () => {
             </div>
             <div className="flex items-center space-x-2">
               {userDID ? (
-                <CheckCircle className="w-5 h-5 text-green-500 animate-bounce-gentle" />
+                <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-500 animate-bounce-gentle" />
               ) : (
                 <button
                   onClick={() => setShowCreateDID(true)}
@@ -467,7 +467,7 @@ const IdentityPage: React.FC = () => {
           
           {credentials.length === 0 ? (
             <div className="bg-dark-card border border-dark-border rounded-xl p-8 text-center">
-              <Award className="w-12 h-12 text-dark-text-secondary mx-auto mb-4 animate-float" />
+              <Icon icon="mdi:award" className="w-12 h-12 text-dark-text-secondary mx-auto mb-4 animate-float" />
               <h3 className="text-lg font-semibold text-dark-text mb-2">No Credentials Yet</h3>
               <p className="text-dark-text-secondary mb-4">
                 Start building your digital identity by requesting verifiable credentials
@@ -495,10 +495,10 @@ const IdentityPage: React.FC = () => {
                   {hoveredCard === credential.id && (
                     <>
                       <div className="absolute top-2 right-2 animate-sparkle">
-                        <Sparkles className="w-3 h-3 text-primary-red opacity-60" />
+                        <Icon icon="mdi:sparkles" className="w-3 h-3 text-primary-red opacity-60" />
                       </div>
                       <div className="absolute top-4 right-6 animate-sparkle" style={{ animationDelay: '0.3s' }}>
-                        <Zap className="w-2 h-2 text-blue-400 opacity-40" />
+                        <Icon icon="mdi:lightning-bolt" className="w-2 h-2 text-blue-400 opacity-40" />
                       </div>
                     </>
                   )}
@@ -507,7 +507,7 @@ const IdentityPage: React.FC = () => {
                     <div className={`p-2 sm:p-3 rounded-lg bg-gradient-to-br ${credential.color} flex-shrink-0 transition-transform duration-300 ${
                       hoveredCard === credential.id ? 'animate-bounce-gentle' : ''
                     }`}>
-                      {credential.icon}
+                      <Icon icon={credential.icon} className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between mb-1 gap-2">

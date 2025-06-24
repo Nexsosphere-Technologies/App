@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Shield, Lock, Globe, HelpCircle, Info, ChevronRight, Eye, EyeOff, Fingerprint, Key, Smartphone, Clock, Languages, MessageCircle, Book, Mail, Phone, ExternalLink, Save, Edit3, Camera, AlertTriangle, CheckCircle, Copy, RefreshCw, LogOut, Trash2, Download, Upload, Settings as SettingsIcon, ArrowLeft, ToggleLeft as Toggle, Palette } from 'lucide-react';
+import { Icon } from '@iconify/react';
 import ThemeSelector from './ThemeSelector';
 
 interface ProfileData {
@@ -101,14 +101,14 @@ const SettingsPage: React.FC = () => {
         >
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-blue-500/20 rounded-lg">
-              <User className="w-5 h-5 text-blue-500" />
+              <Icon icon="mdi:account" className="w-5 h-5 text-blue-500" />
             </div>
             <div className="text-left">
               <h3 className="text-dark-text font-medium">Profile Management</h3>
               <p className="text-sm text-dark-text-secondary">Edit public profile information</p>
             </div>
           </div>
-          <ChevronRight className="w-5 h-5 text-dark-text-secondary" />
+          <Icon icon="mdi:chevron-right" className="w-5 h-5 text-dark-text-secondary" />
         </button>
 
         <button
@@ -117,14 +117,14 @@ const SettingsPage: React.FC = () => {
         >
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-purple-500/20 rounded-lg">
-              <Palette className="w-5 h-5 text-purple-500" />
+              <Icon icon="mdi:palette" className="w-5 h-5 text-purple-500" />
             </div>
             <div className="text-left">
               <h3 className="text-dark-text font-medium">Appearance & Theme</h3>
               <p className="text-sm text-dark-text-secondary">Customize colors and visual style</p>
             </div>
           </div>
-          <ChevronRight className="w-5 h-5 text-dark-text-secondary" />
+          <Icon icon="mdi:chevron-right" className="w-5 h-5 text-dark-text-secondary" />
         </button>
 
         <button
@@ -133,14 +133,14 @@ const SettingsPage: React.FC = () => {
         >
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-green-500/20 rounded-lg">
-              <Shield className="w-5 h-5 text-green-500" />
+              <Icon icon="mdi:shield-check" className="w-5 h-5 text-green-500" />
             </div>
             <div className="text-left">
               <h3 className="text-dark-text font-medium">Privacy Controls</h3>
               <p className="text-sm text-dark-text-secondary">Control data sharing and disclosure</p>
             </div>
           </div>
-          <ChevronRight className="w-5 h-5 text-dark-text-secondary" />
+          <Icon icon="mdi:chevron-right" className="w-5 h-5 text-dark-text-secondary" />
         </button>
 
         <button
@@ -149,14 +149,14 @@ const SettingsPage: React.FC = () => {
         >
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-red-500/20 rounded-lg">
-              <Lock className="w-5 h-5 text-red-500" />
+              <Icon icon="mdi:lock" className="w-5 h-5 text-red-500" />
             </div>
             <div className="text-left">
               <h3 className="text-dark-text font-medium">Security Settings</h3>
               <p className="text-sm text-dark-text-secondary">Biometrics, PIN, seed phrase management</p>
             </div>
           </div>
-          <ChevronRight className="w-5 h-5 text-dark-text-secondary" />
+          <Icon icon="mdi:chevron-right" className="w-5 h-5 text-dark-text-secondary" />
         </button>
 
         <button
@@ -165,14 +165,14 @@ const SettingsPage: React.FC = () => {
         >
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-orange-500/20 rounded-lg">
-              <Languages className="w-5 h-5 text-orange-500" />
+              <Icon icon="mdi:translate" className="w-5 h-5 text-orange-500" />
             </div>
             <div className="text-left">
               <h3 className="text-dark-text font-medium">Language Selection</h3>
               <p className="text-sm text-dark-text-secondary">Multilingual support</p>
             </div>
           </div>
-          <ChevronRight className="w-5 h-5 text-dark-text-secondary" />
+          <Icon icon="mdi:chevron-right" className="w-5 h-5 text-dark-text-secondary" />
         </button>
 
         <button
@@ -181,14 +181,14 @@ const SettingsPage: React.FC = () => {
         >
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-cyan-500/20 rounded-lg">
-              <HelpCircle className="w-5 h-5 text-cyan-500" />
+              <Icon icon="mdi:help-circle" className="w-5 h-5 text-cyan-500" />
             </div>
             <div className="text-left">
               <h3 className="text-dark-text font-medium">Support & Feedback</h3>
               <p className="text-sm text-dark-text-secondary">FAQs, knowledge base, contact support</p>
             </div>
           </div>
-          <ChevronRight className="w-5 h-5 text-dark-text-secondary" />
+          <Icon icon="mdi:chevron-right" className="w-5 h-5 text-dark-text-secondary" />
         </button>
 
         <button
@@ -197,14 +197,14 @@ const SettingsPage: React.FC = () => {
         >
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-indigo-500/20 rounded-lg">
-              <Info className="w-5 h-5 text-indigo-500" />
+              <Icon icon="mdi:information" className="w-5 h-5 text-indigo-500" />
             </div>
             <div className="text-left">
               <h3 className="text-dark-text font-medium">About NexDentify</h3>
               <p className="text-sm text-dark-text-secondary">Version info, legal disclaimers</p>
             </div>
           </div>
-          <ChevronRight className="w-5 h-5 text-dark-text-secondary" />
+          <Icon icon="mdi:chevron-right" className="w-5 h-5 text-dark-text-secondary" />
         </button>
       </div>
 
@@ -216,19 +216,19 @@ const SettingsPage: React.FC = () => {
             onClick={() => setShowThemeModal(true)}
             className="w-full bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity flex items-center justify-center space-x-2"
           >
-            <Palette className="w-4 h-4" />
+            <Icon icon="mdi:palette" className="w-4 h-4" />
             <span>Change Theme</span>
           </button>
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg py-3 text-dark-text hover:border-primary-red-light/30 transition-colors flex items-center justify-center space-x-2">
-            <Download className="w-4 h-4" />
+            <Icon icon="mdi:download" className="w-4 h-4" />
             <span>Export Data</span>
           </button>
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg py-3 text-dark-text hover:border-primary-red-light/30 transition-colors flex items-center justify-center space-x-2">
-            <Upload className="w-4 h-4" />
+            <Icon icon="mdi:upload" className="w-4 h-4" />
             <span>Import Data</span>
           </button>
           <button className="w-full bg-red-500/10 border border-red-500/30 rounded-lg py-3 text-red-400 hover:bg-red-500/20 transition-colors flex items-center justify-center space-x-2">
-            <LogOut className="w-4 h-4" />
+            <Icon icon="mdi:logout" className="w-4 h-4" />
             <span>Sign Out</span>
           </button>
         </div>
@@ -334,7 +334,7 @@ const SettingsPage: React.FC = () => {
             {profileData.displayName.split(' ').map(n => n[0]).join('')}
           </div>
           <button className="absolute -bottom-1 -right-1 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-colors">
-            <Camera className="w-4 h-4" />
+            <Icon icon="mdi:camera" className="w-4 h-4" />
           </button>
         </div>
         <h3 className="text-dark-text font-medium">Profile Picture</h3>
@@ -411,7 +411,7 @@ const SettingsPage: React.FC = () => {
           onClick={handleProfileSave}
           className="w-full mt-6 bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-3 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
         >
-          <Save className="w-4 h-4" />
+          <Icon icon="mdi:content-save" className="w-4 h-4" />
           <span>Save Changes</span>
         </button>
       </div>
@@ -589,7 +589,7 @@ const SettingsPage: React.FC = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Fingerprint className="w-5 h-5 text-blue-500" />
+              <Icon icon="mdi:fingerprint" className="w-5 h-5 text-blue-500" />
               <div>
                 <p className="text-dark-text font-medium">Biometric Authentication</p>
                 <p className="text-sm text-dark-text-secondary">Use fingerprint or face recognition</p>
@@ -611,7 +611,7 @@ const SettingsPage: React.FC = () => {
 
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Key className="w-5 h-5 text-green-500" />
+              <Icon icon="mdi:key" className="w-5 h-5 text-green-500" />
               <div>
                 <p className="text-dark-text font-medium">PIN Protection</p>
                 <p className="text-sm text-dark-text-secondary">Require PIN for sensitive actions</p>
@@ -633,7 +633,7 @@ const SettingsPage: React.FC = () => {
 
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Smartphone className="w-5 h-5 text-purple-500" />
+              <Icon icon="mdi:cellphone" className="w-5 h-5 text-purple-500" />
               <div>
                 <p className="text-dark-text font-medium">Two-Factor Authentication</p>
                 <p className="text-sm text-dark-text-secondary">Add an extra layer of security</p>
@@ -711,9 +711,9 @@ const SettingsPage: React.FC = () => {
               </p>
             </div>
             {securitySettings.seedPhraseBackedUp ? (
-              <CheckCircle className="w-5 h-5 text-green-500" />
+              <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-500" />
             ) : (
-              <AlertTriangle className="w-5 h-5 text-yellow-500" />
+              <Icon icon="mdi:alert-triangle" className="w-5 h-5 text-yellow-500" />
             )}
           </div>
 
@@ -721,14 +721,17 @@ const SettingsPage: React.FC = () => {
             onClick={() => setShowSeedPhrase(!showSeedPhrase)}
             className="w-full bg-dark-bg border border-dark-border rounded-lg py-3 text-dark-text hover:border-primary-red-light/30 transition-colors flex items-center justify-center space-x-2"
           >
-            {showSeedPhrase ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+            {showSeedPhrase ? 
+              <Icon icon="mdi:eye-off" className="w-4 h-4" /> : 
+              <Icon icon="mdi:eye" className="w-4 h-4" />
+            }
             <span>{showSeedPhrase ? 'Hide' : 'Show'} Seed Phrase</span>
           </button>
 
           {showSeedPhrase && (
             <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
               <div className="flex items-start space-x-2 mb-3">
-                <AlertTriangle className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
+                <Icon icon="mdi:alert-triangle" className="w-5 h-5 text-yellow-500 mt-0.5" />
                 <div>
                   <p className="text-yellow-400 font-medium">Keep this safe!</p>
                   <p className="text-sm text-yellow-400/80">Never share your seed phrase with anyone</p>
@@ -738,7 +741,7 @@ const SettingsPage: React.FC = () => {
                 {seedPhrase}
               </div>
               <button className="w-full mt-3 bg-dark-bg border border-dark-border rounded-lg py-2 text-dark-text hover:border-primary-red-light/30 transition-colors flex items-center justify-center space-x-2">
-                <Copy className="w-4 h-4" />
+                <Icon icon="mdi:content-copy" className="w-4 h-4" />
                 <span>Copy to Clipboard</span>
               </button>
             </div>
@@ -777,7 +780,7 @@ const SettingsPage: React.FC = () => {
               <span className="text-dark-text font-medium">{language.name}</span>
             </div>
             {selectedLanguage === language.code && (
-              <CheckCircle className="w-5 h-5 text-primary-red" />
+              <Icon icon="mdi:check-circle" className="w-5 h-5 text-primary-red" />
             )}
           </button>
         ))}
@@ -785,14 +788,14 @@ const SettingsPage: React.FC = () => {
 
       <div className="bg-dark-card border border-dark-border rounded-xl p-4">
         <div className="flex items-center space-x-2 mb-2">
-          <Globe className="w-5 h-5 text-blue-500" />
+          <Icon icon="mdi:web" className="w-5 h-5 text-blue-500" />
           <h4 className="text-dark-text font-medium">Help Us Translate</h4>
         </div>
         <p className="text-sm text-dark-text-secondary mb-3">
           Don't see your language? Help us add support for more languages.
         </p>
         <button className="text-primary-red hover:text-primary-red-light transition-colors text-sm flex items-center space-x-1">
-          <ExternalLink className="w-4 h-4" />
+          <Icon icon="mdi:open-in-new" className="w-4 h-4" />
           <span>Contribute Translations</span>
         </button>
       </div>
@@ -814,35 +817,35 @@ const SettingsPage: React.FC = () => {
         <div className="space-y-3">
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors">
             <div className="flex items-center space-x-3">
-              <Book className="w-5 h-5 text-blue-500" />
+              <Icon icon="mdi:book-open" className="w-5 h-5 text-blue-500" />
               <div className="text-left">
                 <p className="text-dark-text font-medium">Knowledge Base</p>
                 <p className="text-sm text-dark-text-secondary">Browse articles and guides</p>
               </div>
             </div>
-            <ExternalLink className="w-5 h-5 text-dark-text-secondary" />
+            <Icon icon="mdi:open-in-new" className="w-5 h-5 text-dark-text-secondary" />
           </button>
 
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors">
             <div className="flex items-center space-x-3">
-              <HelpCircle className="w-5 h-5 text-green-500" />
+              <Icon icon="mdi:help-circle" className="w-5 h-5 text-green-500" />
               <div className="text-left">
                 <p className="text-dark-text font-medium">Frequently Asked Questions</p>
                 <p className="text-sm text-dark-text-secondary">Find answers to common questions</p>
               </div>
             </div>
-            <ExternalLink className="w-5 h-5 text-dark-text-secondary" />
+            <Icon icon="mdi:open-in-new" className="w-5 h-5 text-dark-text-secondary" />
           </button>
 
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors">
             <div className="flex items-center space-x-3">
-              <MessageCircle className="w-5 h-5 text-purple-500" />
+              <Icon icon="mdi:message-text" className="w-5 h-5 text-purple-500" />
               <div className="text-left">
                 <p className="text-dark-text font-medium">Community Forum</p>
                 <p className="text-sm text-dark-text-secondary">Connect with other users</p>
               </div>
             </div>
-            <ExternalLink className="w-5 h-5 text-dark-text-secondary" />
+            <Icon icon="mdi:open-in-new" className="w-5 h-5 text-dark-text-secondary" />
           </button>
         </div>
       </div>
@@ -853,18 +856,18 @@ const SettingsPage: React.FC = () => {
         <div className="space-y-3">
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors">
             <div className="flex items-center space-x-3">
-              <Mail className="w-5 h-5 text-orange-500" />
+              <Icon icon="mdi:email" className="w-5 h-5 text-orange-500" />
               <div className="text-left">
                 <p className="text-dark-text font-medium">Email Support</p>
                 <p className="text-sm text-dark-text-secondary">support@nexdentify.com</p>
               </div>
             </div>
-            <ExternalLink className="w-5 h-5 text-dark-text-secondary" />
+            <Icon icon="mdi:open-in-new" className="w-5 h-5 text-dark-text-secondary" />
           </button>
 
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors">
             <div className="flex items-center space-x-3">
-              <MessageCircle className="w-5 h-5 text-blue-500" />
+              <Icon icon="mdi:message-text" className="w-5 h-5 text-blue-500" />
               <div className="text-left">
                 <p className="text-dark-text font-medium">Live Chat</p>
                 <p className="text-sm text-dark-text-secondary">Available 24/7</p>
@@ -907,7 +910,7 @@ const SettingsPage: React.FC = () => {
       {/* App Information */}
       <div className="bg-dark-card border border-dark-border rounded-xl p-6 text-center">
         <div className="w-16 h-16 bg-gradient-to-br from-primary-red to-primary-red-dark rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <Shield className="w-8 h-8 text-white" />
+          <Icon icon="mdi:shield-check" className="w-8 h-8 text-white" />
         </div>
         <h4 className="text-xl font-semibold text-dark-text mb-2">NexDentify</h4>
         <p className="text-dark-text-secondary mb-4">Decentralized Identity Platform</p>
@@ -939,19 +942,19 @@ const SettingsPage: React.FC = () => {
         <div className="space-y-3">
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors">
             <span className="text-dark-text">Terms of Service</span>
-            <ExternalLink className="w-4 h-4 text-dark-text-secondary" />
+            <Icon icon="mdi:open-in-new" className="w-4 h-4 text-dark-text-secondary" />
           </button>
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors">
             <span className="text-dark-text">Privacy Policy</span>
-            <ExternalLink className="w-4 h-4 text-dark-text-secondary" />
+            <Icon icon="mdi:open-in-new" className="w-4 h-4 text-dark-text-secondary" />
           </button>
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors">
             <span className="text-dark-text">Cookie Policy</span>
-            <ExternalLink className="w-4 h-4 text-dark-text-secondary" />
+            <Icon icon="mdi:open-in-new" className="w-4 h-4 text-dark-text-secondary" />
           </button>
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors">
             <span className="text-dark-text">Open Source Licenses</span>
-            <ExternalLink className="w-4 h-4 text-dark-text-secondary" />
+            <Icon icon="mdi:open-in-new" className="w-4 h-4 text-dark-text-secondary" />
           </button>
         </div>
       </div>
@@ -996,7 +999,7 @@ const SettingsPage: React.FC = () => {
             onClick={() => setActiveView('main')}
             className="text-dark-text-secondary hover:text-dark-text transition-colors"
           >
-            <ArrowLeft className="w-6 h-6" />
+            <Icon icon="mdi:arrow-left" className="w-6 h-6" />
           </button>
           <h1 className="text-xl font-semibold text-dark-text">
             {activeView === 'profile' ? 'Profile Management' :

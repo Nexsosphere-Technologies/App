@@ -1,25 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Coins, 
-  TrendingUp, 
-  Plus, 
-  Minus, 
-  Gift, 
-  History, 
-  ArrowUpRight, 
-  ArrowDownLeft,
-  Droplets,
-  Lock,
-  Unlock,
-  Calendar,
-  DollarSign,
-  Percent,
-  ExternalLink,
-  RefreshCw,
-  AlertCircle,
-  CheckCircle,
-  Clock
-} from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { useAlgorand, useStaking, useFarming } from '../hooks/useAlgorand';
 
 const EarnPage: React.FC = () => {
@@ -107,7 +87,7 @@ const EarnPage: React.FC = () => {
     return (
       <div className="min-h-screen bg-dark-bg pb-20 flex items-center justify-center">
         <div className="text-center space-y-4">
-          <Coins className="w-16 h-16 text-primary-red mx-auto animate-pulse-glow" />
+          <Icon icon="mdi:coins" className="w-16 h-16 text-primary-red mx-auto animate-pulse-glow" />
           <h2 className="text-xl font-semibold text-dark-text">Connect Your Wallet</h2>
           <p className="text-dark-text-secondary">Please connect your Algorand wallet to start earning</p>
         </div>
@@ -125,7 +105,7 @@ const EarnPage: React.FC = () => {
             onClick={refreshBalances}
             className="text-dark-text-secondary hover:text-dark-text transition-colors hover-scale"
           >
-            <RefreshCw className="w-5 h-5" />
+            <Icon icon="mdi:refresh" className="w-5 h-5" />
           </button>
         </div>
         <div className="text-center">
@@ -158,14 +138,14 @@ const EarnPage: React.FC = () => {
           onClick={() => setActiveView('stake')}
           className="bg-gradient-to-r from-primary-red to-primary-red-dark text-white p-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity hover-lift"
         >
-          <TrendingUp className="w-5 h-5" />
+          <Icon icon="mdi:trending-up" className="w-5 h-5" />
           <span>Start Staking</span>
         </button>
         <button
           onClick={() => setActiveView('farm')}
           className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity hover-lift"
         >
-          <Droplets className="w-5 h-5" />
+          <Icon icon="mdi:water" className="w-5 h-5" />
           <span>Farm LP</span>
         </button>
       </div>
@@ -189,7 +169,7 @@ const EarnPage: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
                     <div className="p-2 rounded-lg bg-gradient-to-br from-primary-red to-primary-red-dark">
-                      <Coins className="w-6 h-6 text-white" />
+                      <Icon icon="mdi:coins" className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="text-dark-text font-medium">{pool.name}</h4>
@@ -233,7 +213,7 @@ const EarnPage: React.FC = () => {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <div className="p-3 rounded-lg bg-gradient-to-br from-primary-red to-primary-red-dark animate-pulse-glow">
-                      <Coins className="w-6 h-6 text-white" />
+                      <Icon icon="mdi:coins" className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-dark-text">{pool.name}</h4>
@@ -284,7 +264,7 @@ const EarnPage: React.FC = () => {
                     }}
                     className="flex-1 bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-3 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity hover-lift"
                   >
-                    <Plus className="w-4 h-4" />
+                    <Icon icon="mdi:plus" className="w-4 h-4" />
                     <span>Stake</span>
                   </button>
                   <button
@@ -295,7 +275,7 @@ const EarnPage: React.FC = () => {
                     disabled={!userStake?.stakeAmount || userStake.stakeAmount === 0}
                     className="flex-1 bg-dark-bg border border-dark-border text-dark-text py-3 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:border-primary-red-light/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Minus className="w-4 h-4" />
+                    <Icon icon="mdi:minus" className="w-4 h-4" />
                     <span>Unstake</span>
                   </button>
                   <button
@@ -303,7 +283,7 @@ const EarnPage: React.FC = () => {
                     disabled={!userStake?.pendingRewards || userStake.pendingRewards === 0 || transactionLoading}
                     className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Gift className="w-4 h-4" />
+                    <Icon icon="mdi:gift" className="w-4 h-4" />
                     <span>{transactionLoading ? 'Claiming...' : 'Claim'}</span>
                   </button>
                 </div>
@@ -337,7 +317,7 @@ const EarnPage: React.FC = () => {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <div className="p-3 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 animate-pulse-glow">
-                      <Droplets className="w-6 h-6 text-white" />
+                      <Icon icon="mdi:water" className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-dark-text">{farm.name}</h4>
@@ -379,14 +359,14 @@ const EarnPage: React.FC = () => {
 
                 <div className="flex space-x-3">
                   <button className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity hover-lift">
-                    <Plus className="w-4 h-4" />
+                    <Icon icon="mdi:plus" className="w-4 h-4" />
                     <span>Add Liquidity</span>
                   </button>
                   <button
                     disabled={!userFarm?.depositAmount || userFarm.depositAmount === 0}
                     className="flex-1 bg-dark-bg border border-dark-border text-dark-text py-3 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:border-primary-red-light/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Minus className="w-4 h-4" />
+                    <Icon icon="mdi:minus" className="w-4 h-4" />
                     <span>Remove</span>
                   </button>
                   <button
@@ -394,7 +374,7 @@ const EarnPage: React.FC = () => {
                     disabled={!userFarm?.pendingRewards || userFarm.pendingRewards === 0 || transactionLoading}
                     className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Gift className="w-4 h-4" />
+                    <Icon icon="mdi:gift" className="w-4 h-4" />
                     <span>{transactionLoading ? 'Claiming...' : 'Claim'}</span>
                   </button>
                 </div>
@@ -414,7 +394,7 @@ const EarnPage: React.FC = () => {
       </div>
 
       <div className="bg-dark-card border border-dark-border rounded-xl p-8 text-center">
-        <History className="w-12 h-12 text-dark-text-secondary mx-auto mb-4 animate-float" />
+        <Icon icon="mdi:history" className="w-12 h-12 text-dark-text-secondary mx-auto mb-4 animate-float" />
         <h3 className="text-lg font-semibold text-dark-text mb-2">No Transactions Yet</h3>
         <p className="text-dark-text-secondary">
           Your staking and farming transactions will appear here
@@ -424,10 +404,10 @@ const EarnPage: React.FC = () => {
   );
 
   const navigationItems = [
-    { id: 'overview', label: 'Overview', icon: <TrendingUp className="w-5 h-5" /> },
-    { id: 'stake', label: 'Staking', icon: <Coins className="w-5 h-5" /> },
-    { id: 'farm', label: 'Farming', icon: <Droplets className="w-5 h-5" /> },
-    { id: 'history', label: 'History', icon: <History className="w-5 h-5" /> }
+    { id: 'overview', label: 'Overview', icon: 'mdi:trending-up' },
+    { id: 'stake', label: 'Staking', icon: 'mdi:coins' },
+    { id: 'farm', label: 'Farming', icon: 'mdi:water' },
+    { id: 'history', label: 'History', icon: 'mdi:history' }
   ];
 
   return (
@@ -451,7 +431,7 @@ const EarnPage: React.FC = () => {
               }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {item.icon}
+              <Icon icon={item.icon} className="w-5 h-5" />
               <span>{item.label}</span>
             </button>
           ))}
@@ -476,7 +456,7 @@ const EarnPage: React.FC = () => {
                 onClick={() => setShowStakeModal(false)}
                 className="text-dark-text-secondary hover:text-dark-text transition-colors"
               >
-                ×
+                <Icon icon="mdi:close" className="w-6 h-6" />
               </button>
             </div>
             
@@ -546,7 +526,7 @@ const EarnPage: React.FC = () => {
                 onClick={() => setShowUnstakeModal(false)}
                 className="text-dark-text-secondary hover:text-dark-text transition-colors"
               >
-                ×
+                <Icon icon="mdi:close" className="w-6 h-6" />
               </button>
             </div>
             
