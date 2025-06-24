@@ -14,7 +14,7 @@ import OnboardingFlow from './components/OnboardingFlow';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingScreen from './components/LoadingScreen';
 import { environment, isDevelopment } from './config/environment';
-import { ErrorHandler } from './utils/errorHandler';
+import { errorHandler } from './utils/errorHandler';
 import { PerformanceMonitor } from './utils/performance';
 import { analytics } from './utils/analytics';
 
@@ -31,7 +31,7 @@ function App() {
   const initializeApp = async () => {
     try {
       // Initialize error handler
-      ErrorHandler.initialize({
+      errorHandler.initialize({
         enableReporting: environment.ENABLE_ERROR_REPORTING,
         enableLogging: environment.ENABLE_DEBUG,
         environment: environment.APP_ENV
@@ -75,7 +75,7 @@ function App() {
       } else {
         // In production, show error
         setInitError('Failed to initialize application. Please check your configuration.');
-        ErrorHandler.handleError(error as Error, 'App initialization failed');
+        errorHandler.handleError(error as Error, 'App initialization failed');
       }
     }
   };

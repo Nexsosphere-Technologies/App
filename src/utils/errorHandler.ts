@@ -11,14 +11,28 @@ export interface ErrorReport {
   url: string;
 }
 
+interface ErrorHandlerConfig {
+  enableReporting?: boolean;
+  enableLogging?: boolean;
+  environment?: string;
+}
+
 class ErrorHandler {
   private static instance: ErrorHandler;
+  private config: ErrorHandlerConfig = {};
   
   static getInstance(): ErrorHandler {
     if (!ErrorHandler.instance) {
       ErrorHandler.instance = new ErrorHandler();
     }
     return ErrorHandler.instance;
+  }
+  
+  /**
+   * Initialize error handler with configuration
+   */
+  initialize(config: ErrorHandlerConfig): void {
+    this.config = { ...this.config, ...config };
   }
   
   /**
@@ -40,7 +54,7 @@ class ErrorHandler {
     }
     
     // Send to error reporting service in production
-    if (import.meta.env.PROD && import.meta.env.VITE_ENABLE_ERROR_REPORTING === 'true') {
+    if (import.meta.env.PROD && this.config.enableReporting) {
       this.reportError(errorReport);
     }
     
