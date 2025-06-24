@@ -12,6 +12,10 @@ import DiscoverPage from './components/DiscoverPage';
 function App() {
   const [activeTab, setActiveTab] = useState('home');
 
+  const handleDiscoverClick = () => {
+    setActiveTab('discover');
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case 'identity':
@@ -42,7 +46,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-dark-bg text-dark-text">
-      <TopBar />
+      <TopBar onDiscoverClick={handleDiscoverClick} />
       {renderContent()}
       <BottomNavigation activeTab={activeTab} onTabChange={setActiveTab} />
     </div>

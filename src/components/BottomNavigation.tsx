@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, CreditCard, Star, Leaf, Settings, Compass } from 'lucide-react';
+import { Home, CreditCard, Star, Leaf, Settings } from 'lucide-react';
 
 interface NavItem {
   id: string;
@@ -18,7 +18,6 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ activeTab, onTabCha
     { id: 'identity', icon: <CreditCard className="w-5 h-5" />, label: 'Identity' },
     { id: 'reputation', icon: <Star className="w-5 h-5" />, label: 'Reputation' },
     { id: 'earn', icon: <Leaf className="w-5 h-5" />, label: 'Earn' },
-    { id: 'discover', icon: <Compass className="w-5 h-5" />, label: 'Discover' },
     { id: 'settings', icon: <Settings className="w-5 h-5" />, label: 'Settings' }
   ];
 
@@ -29,7 +28,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ activeTab, onTabCha
           <button
             key={item.id}
             onClick={() => onTabChange(item.id)}
-            className={`flex flex-col items-center space-y-1 py-2 px-2 rounded-lg transition-colors ${
+            className={`flex flex-col items-center space-y-1 py-2 px-3 rounded-lg transition-colors ${
               activeTab === item.id
                 ? 'text-primary-red bg-primary-red/10'
                 : 'text-dark-text-secondary hover:text-dark-text'
