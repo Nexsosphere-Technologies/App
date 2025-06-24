@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { User, Shield, Lock, Globe, HelpCircle, Info, ChevronRight, Eye, EyeOff, Fingerprint, Key, Smartphone, Clock, Languages, MessageCircle, Book, Mail, Phone, ExternalLink, Save, Edit3, Camera, AlertTriangle, CheckCircle, Copy, RefreshCw, LogOut, Trash2, Download, Upload, Settings as SettingsIcon, ArrowLeft, ToggleLeft as Toggle } from 'lucide-react';
+import { User, Shield, Lock, Globe, HelpCircle, Info, ChevronRight, Eye, EyeOff, Fingerprint, Key, Smartphone, Clock, Languages, MessageCircle, Book, Mail, Phone, ExternalLink, Save, Edit3, Camera, AlertTriangle, CheckCircle, Copy, RefreshCw, LogOut, Trash2, Download, Upload, Settings as SettingsIcon, ArrowLeft, ToggleLeft as Toggle, Palette } from 'lucide-react';
+import ThemeSelector from './ThemeSelector';
 
 interface ProfileData {
   displayName: string;
@@ -31,9 +32,10 @@ interface SecuritySettings {
 }
 
 const SettingsPage: React.FC = () => {
-  const [activeView, setActiveView] = useState<'main' | 'profile' | 'privacy' | 'security' | 'language' | 'support' | 'about'>('main');
+  const [activeView, setActiveView] = useState<'main' | 'profile' | 'privacy' | 'security' | 'language' | 'support' | 'about' | 'appearance'>('main');
   const [showSeedPhrase, setShowSeedPhrase] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [showThemeModal, setShowThemeModal] = useState(false);
 
   const [profileData, setProfileData] = useState<ProfileData>({
     displayName: 'John Doe',
@@ -110,6 +112,22 @@ const SettingsPage: React.FC = () => {
         </button>
 
         <button
+          onClick={() => setActiveView('appearance')}
+          className="w-full bg-dark-card border border-dark-border rounded-xl p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors"
+        >
+          <div className="flex items-center space-x-3">
+            <div className="p-2 bg-purple-500/20 rounded-lg">
+              <Palette className="w-5 h-5 text-purple-500" />
+            </div>
+            <div className="text-left">
+              <h3 className="text-dark-text font-medium">Appearance & Theme</h3>
+              <p className="text-sm text-dark-text-secondary">Customize colors and visual style</p>
+            </div>
+          </div>
+          <ChevronRight className="w-5 h-5 text-dark-text-secondary" />
+        </button>
+
+        <button
           onClick={() => setActiveView('privacy')}
           className="w-full bg-dark-card border border-dark-border rounded-xl p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors"
         >
@@ -146,8 +164,8 @@ const SettingsPage: React.FC = () => {
           className="w-full bg-dark-card border border-dark-border rounded-xl p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors"
         >
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-purple-500/20 rounded-lg">
-              <Languages className="w-5 h-5 text-purple-500" />
+            <div className="p-2 bg-orange-500/20 rounded-lg">
+              <Languages className="w-5 h-5 text-orange-500" />
             </div>
             <div className="text-left">
               <h3 className="text-dark-text font-medium">Language Selection</h3>
@@ -162,8 +180,8 @@ const SettingsPage: React.FC = () => {
           className="w-full bg-dark-card border border-dark-border rounded-xl p-4 flex items-center justify-between hover:border-primary-red-light/30 transition-colors"
         >
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-orange-500/20 rounded-lg">
-              <HelpCircle className="w-5 h-5 text-orange-500" />
+            <div className="p-2 bg-cyan-500/20 rounded-lg">
+              <HelpCircle className="w-5 h-5 text-cyan-500" />
             </div>
             <div className="text-left">
               <h3 className="text-dark-text font-medium">Support & Feedback</h3>
@@ -194,6 +212,13 @@ const SettingsPage: React.FC = () => {
       <div className="bg-dark-card border border-dark-border rounded-xl p-4">
         <h3 className="text-dark-text font-medium mb-3">Quick Actions</h3>
         <div className="space-y-3">
+          <button 
+            onClick={() => setShowThemeModal(true)}
+            className="w-full bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity flex items-center justify-center space-x-2"
+          >
+            <Palette className="w-4 h-4" />
+            <span>Change Theme</span>
+          </button>
           <button className="w-full bg-dark-bg border border-dark-border rounded-lg py-3 text-dark-text hover:border-primary-red-light/30 transition-colors flex items-center justify-center space-x-2">
             <Download className="w-4 h-4" />
             <span>Export Data</span>
@@ -205,6 +230,95 @@ const SettingsPage: React.FC = () => {
           <button className="w-full bg-red-500/10 border border-red-500/30 rounded-lg py-3 text-red-400 hover:bg-red-500/20 transition-colors flex items-center justify-center space-x-2">
             <LogOut className="w-4 h-4" />
             <span>Sign Out</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderAppearanceSettings = () => (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold text-dark-text mb-2">Appearance & Theme</h3>
+        <p className="text-sm text-dark-text-secondary mb-4">
+          Customize the visual appearance of NexDentify to match your preferences
+        </p>
+      </div>
+
+      {/* Theme Selection */}
+      <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+        <h4 className="text-dark-text font-medium mb-4">Theme Selection</h4>
+        <ThemeSelector />
+      </div>
+
+      {/* Display Options */}
+      <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+        <h4 className="text-dark-text font-medium mb-4">Display Options</h4>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-dark-text font-medium">Reduce Motion</p>
+              <p className="text-sm text-dark-text-secondary">Minimize animations and transitions</p>
+            </div>
+            <button className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors bg-gray-600">
+              <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-1" />
+            </button>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-dark-text font-medium">High Contrast</p>
+              <p className="text-sm text-dark-text-secondary">Increase contrast for better visibility</p>
+            </div>
+            <button className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors bg-gray-600">
+              <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-1" />
+            </button>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-dark-text font-medium">Large Text</p>
+              <p className="text-sm text-dark-text-secondary">Increase font size for better readability</p>
+            </div>
+            <button className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors bg-gray-600">
+              <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-1" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Color Customization */}
+      <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+        <h4 className="text-dark-text font-medium mb-4">Color Customization</h4>
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm text-dark-text-secondary mb-2">Accent Color</label>
+            <div className="flex space-x-3">
+              {['#ef4444', '#3b82f6', '#22c55e', '#f59e0b', '#8b5cf6', '#06b6d4'].map((color) => (
+                <button
+                  key={color}
+                  className="w-10 h-10 rounded-lg border-2 border-dark-border hover:border-white transition-colors"
+                  style={{ backgroundColor: color }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Preview */}
+      <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+        <h4 className="text-dark-text font-medium mb-4">Preview</h4>
+        <div className="bg-dark-bg border border-dark-border rounded-lg p-4">
+          <div className="flex items-center space-x-3 mb-3">
+            <div className="w-8 h-8 bg-primary-red rounded-lg"></div>
+            <div>
+              <p className="text-dark-text font-medium">Sample Card</p>
+              <p className="text-sm text-dark-text-secondary">This is how content will appear</p>
+            </div>
+          </div>
+          <button className="bg-primary-red text-white px-4 py-2 rounded-lg text-sm">
+            Sample Button
           </button>
         </div>
       </div>
@@ -886,6 +1000,7 @@ const SettingsPage: React.FC = () => {
           </button>
           <h1 className="text-xl font-semibold text-dark-text">
             {activeView === 'profile' ? 'Profile Management' :
+             activeView === 'appearance' ? 'Appearance & Theme' :
              activeView === 'privacy' ? 'Privacy Controls' :
              activeView === 'security' ? 'Security Settings' :
              activeView === 'language' ? 'Language Selection' :
@@ -897,6 +1012,7 @@ const SettingsPage: React.FC = () => {
         {/* Content */}
         <div className="px-4 py-6">
           {activeView === 'profile' && renderProfileManagement()}
+          {activeView === 'appearance' && renderAppearanceSettings()}
           {activeView === 'privacy' && renderPrivacyControls()}
           {activeView === 'security' && renderSecuritySettings()}
           {activeView === 'language' && renderLanguageSelection()}
@@ -918,6 +1034,11 @@ const SettingsPage: React.FC = () => {
       <div className="px-4 py-6">
         {renderMainSettings()}
       </div>
+
+      {/* Theme Modal */}
+      {showThemeModal && (
+        <ThemeSelector isModal={true} onClose={() => setShowThemeModal(false)} />
+      )}
     </div>
   );
 };

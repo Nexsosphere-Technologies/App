@@ -1,3 +1,121 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Base theme variables */
+:root {
+  /* Dark theme (default) */
+  --color-bg: #0f0f0f;
+  --color-card: #1a1a1a;
+  --color-border: #262626;
+  --color-text: #fafafa;
+  --color-text-secondary: #a3a3a3;
+  --color-primary: #ef4444;
+  --color-primary-dark: #dc2626;
+  --color-primary-light: #f87171;
+}
+
+/* Light theme */
+.theme-light {
+  --color-bg: #ffffff;
+  --color-card: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-primary: #ef4444;
+  --color-primary-dark: #dc2626;
+  --color-primary-light: #f87171;
+}
+
+/* Midnight theme */
+.theme-midnight {
+  --color-bg: #0c1426;
+  --color-card: #1e293b;
+  --color-border: #334155;
+  --color-text: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-primary-light: #60a5fa;
+}
+
+/* Ocean theme */
+.theme-ocean {
+  --color-bg: #0f1419;
+  --color-card: #1a2332;
+  --color-border: #2d3748;
+  --color-text: #e0f2fe;
+  --color-text-secondary: #a7c7d6;
+  --color-primary: #06b6d4;
+  --color-primary-dark: #0891b2;
+  --color-primary-light: #22d3ee;
+}
+
+/* Forest theme */
+.theme-forest {
+  --color-bg: #0f1b0f;
+  --color-card: #1a2e1a;
+  --color-border: #2d4a2d;
+  --color-text: #dcfce7;
+  --color-text-secondary: #a7d4a7;
+  --color-primary: #22c55e;
+  --color-primary-dark: #16a34a;
+  --color-primary-light: #4ade80;
+}
+
+/* Apply CSS variables to Tailwind classes */
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Custom utility classes using CSS variables */
+@layer utilities {
+  .bg-theme-bg {
+    background-color: var(--color-bg);
+  }
+  
+  .bg-theme-card {
+    background-color: var(--color-card);
+  }
+  
+  .border-theme-border {
+    border-color: var(--color-border);
+  }
+  
+  .text-theme-text {
+    color: var(--color-text);
+  }
+  
+  .text-theme-text-secondary {
+    color: var(--color-text-secondary);
+  }
+  
+  .text-theme-primary {
+    color: var(--color-primary);
+  }
+  
+  .bg-theme-primary {
+    background-color: var(--color-primary);
+  }
+  
+  .border-theme-primary {
+    border-color: var(--color-primary);
+  }
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Override transitions for specific elements that shouldn't animate */
+.no-theme-transition,
+.no-theme-transition * {
+  transition: none !important;
+}

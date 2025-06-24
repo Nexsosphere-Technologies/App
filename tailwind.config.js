@@ -5,21 +5,38 @@ export default {
     extend: {
       colors: {
         primary: {
-          red: '#ef4444',
-          'red-dark': '#dc2626',
-          'red-light': '#f87171',
+          red: 'var(--color-primary)',
+          'red-dark': 'var(--color-primary-dark)',
+          'red-light': 'var(--color-primary-light)',
         },
         dark: {
-          bg: '#0f0f0f',
-          card: '#1a1a1a',
-          border: '#262626',
-          text: '#fafafa',
-          'text-secondary': '#a3a3a3',
+          bg: 'var(--color-bg)',
+          card: 'var(--color-card)',
+          border: 'var(--color-border)',
+          text: 'var(--color-text)',
+          'text-secondary': 'var(--color-text-secondary)',
+        },
+        theme: {
+          bg: 'var(--color-bg)',
+          card: 'var(--color-card)',
+          border: 'var(--color-border)',
+          text: 'var(--color-text)',
+          'text-secondary': 'var(--color-text-secondary)',
+          primary: 'var(--color-primary)',
+          'primary-dark': 'var(--color-primary-dark)',
+          'primary-light': 'var(--color-primary-light)',
         }
       },
       animation: {
         'bounce-subtle': 'bounce 2s infinite',
         'pulse-glow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'theme-transition': 'themeTransition 0.3s ease-in-out',
+      },
+      keyframes: {
+        themeTransition: {
+          '0%': { opacity: '0.8' },
+          '100%': { opacity: '1' },
+        }
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
