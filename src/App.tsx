@@ -7,6 +7,7 @@ import BottomNavigation from './components/BottomNavigation';
 import IdentityPage from './components/IdentityPage';
 import ReputationPage from './components/ReputationPage';
 import EarnPage from './components/EarnPage';
+import DiscoverPage from './components/DiscoverPage';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -19,6 +20,8 @@ function App() {
         return <ReputationPage />;
       case 'earn':
         return <EarnPage />;
+      case 'discover':
+        return <DiscoverPage />;
       case 'settings':
         return (
           <div className="max-w-md mx-auto px-4 py-8">
