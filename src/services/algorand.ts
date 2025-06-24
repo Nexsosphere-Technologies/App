@@ -8,12 +8,12 @@ import { environment } from '../config/environment';
 
 // Contract addresses and IDs from environment configuration
 export const CONTRACT_IDS = {
-  NEXDEN_TOKEN: environment.contracts.nexdenToken,
-  DID_REGISTRY: environment.contracts.didRegistry,
-  VC_REGISTRY: environment.contracts.vcRegistry,
-  REPUTATION_SYSTEM: environment.contracts.reputationSystem,
-  STAKING_CONTRACT: environment.contracts.stakingContract,
-  LP_FARMING: environment.contracts.lpFarming,
+  NEXDEN_TOKEN: environment.NEXDEN_TOKEN_ID,
+  DID_REGISTRY: environment.DID_REGISTRY_ID,
+  VC_REGISTRY: environment.VC_REGISTRY_ID,
+  REPUTATION_SYSTEM: environment.REPUTATION_SYSTEM_ID,
+  STAKING_CONTRACT: environment.STAKING_CONTRACT_ID,
+  LP_FARMING: environment.LP_FARMING_ID,
 };
 
 // Algorand client configuration
