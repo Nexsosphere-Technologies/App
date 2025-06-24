@@ -15,7 +15,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import LoadingScreen from './components/LoadingScreen';
 import { environment, isDevelopment } from './config/environment';
 import { errorHandler } from './utils/errorHandler';
-import { PerformanceMonitor } from './utils/performance';
+import { performanceMonitor } from './utils/performance';
 import { analytics } from './utils/analytics';
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
 
       // Initialize performance monitoring
       if (environment.ENABLE_ANALYTICS) {
-        PerformanceMonitor.initialize();
+        performanceMonitor.init();
       }
 
       // Initialize analytics
