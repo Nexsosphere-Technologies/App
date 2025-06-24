@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Bell, Shield, Compass, Palette, Sparkles } from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { useTheme } from '../contexts/ThemeContext';
+import { useAlgorand } from '../hooks/useAlgorand';
 import ThemeSelector from './ThemeSelector';
+import WalletConnect from './WalletConnect';
 
 interface TopBarProps {
   onDiscoverClick?: () => void;
@@ -10,7 +12,9 @@ interface TopBarProps {
 
 const TopBar: React.FC<TopBarProps> = ({ onDiscoverClick, onNotificationClick }) => {
   const [showThemeModal, setShowThemeModal] = useState(false);
+  const [showWalletModal, setShowWalletModal] = useState(false);
   const [clickedButton, setClickedButton] = useState<string | null>(null);
+  const { isConnected, address } = useAlgorand();
 
   const handleButtonClick = (buttonId: string, callback?: () => void) => {
     setClickedButton(buttonId);
@@ -26,15 +30,15 @@ const TopBar: React.FC<TopBarProps> = ({ onDiscoverClick, onNotificationClick })
         
         {/* Floating sparkles */}
         <div className="absolute top-2 right-20 animate-sparkle opacity-40">
-          <Sparkles className="w-2 h-2 text-primary-red" />
+          <Icon icon="mdi:sparkles" className="w-2 h-2 text-primary-red" />
         </div>
         <div className="absolute top-4 right-32 animate-sparkle opacity-30" style={{ animationDelay: '1s' }}>
-          <Sparkles className="w-1.5 h-1.5 text-blue-400" />
+          <Icon icon="mdi:sparkles" className="w-1.5 h-1.5 text-blue-400" />
         </div>
 
         <div className="flex items-center space-x-2 animate-slide-in-left relative z-10">
           <div className="bg-gradient-to-br from-primary-red to-primary-red-dark p-1.5 sm:p-2 rounded-lg animate-pulse-glow hover-scale transition-transform duration-300">
-            <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <Icon icon="mdi:shield-check" className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </div>
           <h1 className="text-lg sm:text-xl font-bold text-dark-text hover-glow transition-all duration-300">
             NexDentify
@@ -42,6 +46,25 @@ const TopBar: React.FC<TopBarProps> = ({ onDiscoverClick, onNotificationClick })
         </div>
         
         <div className="flex items-center space-x-2 sm:space-x-3 animate-slide-in-right relative z-10">
+          {/* Wallet Connect Button */}
+          <button
+            onClick={() => handleButtonClick('wallet', () => setShowWalletModal(true))}
+            className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 hover-scale hover-glow ${
+              isConnected 
+                ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+                : 'bg-primary-red/20 text-primary-red border border-primary-red/30'
+            } ${clickedButton === 'wallet' ? 'animate-wiggle' : ''}`}
+            title={isConnected ? 'Wallet Connected' : 'Connect Wallet'}
+          >
+            <Icon 
+              icon={isConnected ? "mdi:wallet-outline" : "mdi:wallet-plus"} 
+              className="w-4 h-4 sm:w-5 sm:h-5" 
+            />
+            <span className="hidden sm:inline text-xs font-medium">
+              {isConnected ? `${address.substring(0, 6)}...` : 'Connect'}
+            </span>
+          </button>
+
           <button
             onClick={() => handleButtonClick('theme', () => setShowThemeModal(true))}
             className={`text-dark-text-secondary hover:text-dark-text transition-all duration-300 p-1 hover-scale hover-glow ${
@@ -49,7 +72,7 @@ const TopBar: React.FC<TopBarProps> = ({ onDiscoverClick, onNotificationClick })
             }`}
             title="Change Theme"
           >
-            <Palette className="w-5 h-5 sm:w-6 sm:h-6" />
+            <Icon icon="mdi:palette" className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
           
           <button
@@ -58,7 +81,7 @@ const TopBar: React.FC<TopBarProps> = ({ onDiscoverClick, onNotificationClick })
               clickedButton === 'discover' ? 'animate-wiggle' : ''
             }`}
           >
-            <Compass className="w-5 h-5 sm:w-6 sm:h-6" />
+            <Icon icon="mdi:compass" className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
           
           <div className="relative">
@@ -68,7 +91,7 @@ const TopBar: React.FC<TopBarProps> = ({ onDiscoverClick, onNotificationClick })
                 clickedButton === 'notifications' ? 'animate-wiggle' : ''
               }`}
             >
-              <Bell className="w-5 h-5 sm:w-6 sm:h-6" />
+              <Icon icon="mdi:bell" className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             <div className="absolute -top-1 -right-1 bg-primary-red text-white text-xs rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center animate-heartbeat">
               3
@@ -80,6 +103,11 @@ const TopBar: React.FC<TopBarProps> = ({ onDiscoverClick, onNotificationClick })
       {/* Theme Modal */}
       {showThemeModal && (
         <ThemeSelector isModal={true} onClose={() => setShowThemeModal(false)} />
+      )}
+
+      {/* Wallet Modal */}
+      {showWalletModal && (
+        <WalletConnect isModal={true} onClose={() => setShowWalletModal(false)} />
       )}
     </>
   );

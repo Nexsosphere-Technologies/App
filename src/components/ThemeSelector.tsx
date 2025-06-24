@@ -1,23 +1,12 @@
 import React, { useState } from 'react';
 import { useTheme, Theme } from '../contexts/ThemeContext';
-import { 
-  Palette, 
-  Sun, 
-  Moon, 
-  Monitor, 
-  Droplets, 
-  Trees, 
-  Star,
-  Check,
-  ChevronDown,
-  ArrowLeft
-} from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface ThemeOption {
   id: Theme;
   name: string;
   description: string;
-  icon: React.ReactNode;
+  icon: string;
   preview: {
     bg: string;
     card: string;
@@ -40,7 +29,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
       id: 'dark',
       name: 'Dark',
       description: 'Classic dark theme for comfortable viewing',
-      icon: <Moon className="w-5 h-5" />,
+      icon: 'mdi:moon-waning-crescent',
       preview: {
         bg: '#0f0f0f',
         card: '#1a1a1a',
@@ -52,7 +41,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
       id: 'light',
       name: 'Light',
       description: 'Clean light theme for bright environments',
-      icon: <Sun className="w-5 h-5" />,
+      icon: 'mdi:white-balance-sunny',
       preview: {
         bg: '#ffffff',
         card: '#f8fafc',
@@ -64,7 +53,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
       id: 'auto',
       name: 'Auto',
       description: 'Automatically switch based on system preference',
-      icon: <Monitor className="w-5 h-5" />,
+      icon: 'mdi:monitor',
       preview: {
         bg: 'linear-gradient(45deg, #0f0f0f 50%, #ffffff 50%)',
         card: 'linear-gradient(45deg, #1a1a1a 50%, #f8fafc 50%)',
@@ -76,7 +65,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
       id: 'midnight',
       name: 'Midnight',
       description: 'Deep blue theme inspired by the night sky',
-      icon: <Star className="w-5 h-5" />,
+      icon: 'mdi:star-four-points',
       preview: {
         bg: '#0c1426',
         card: '#1e293b',
@@ -88,7 +77,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
       id: 'ocean',
       name: 'Ocean',
       description: 'Calming blue-green theme like deep waters',
-      icon: <Droplets className="w-5 h-5" />,
+      icon: 'mdi:waves',
       preview: {
         bg: '#0f1419',
         card: '#1a2332',
@@ -100,7 +89,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
       id: 'forest',
       name: 'Forest',
       description: 'Natural green theme for a refreshing feel',
-      icon: <Trees className="w-5 h-5" />,
+      icon: 'mdi:tree',
       preview: {
         bg: '#0f1b0f',
         card: '#1a2e1a',
@@ -127,7 +116,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-primary-red/20 rounded-lg">
-                <Palette className="w-6 h-6 text-primary-red" />
+                <Icon icon="mdi:palette" className="w-6 h-6 text-primary-red" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-dark-text">Choose Theme</h3>
@@ -138,7 +127,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
               onClick={onClose}
               className="text-dark-text-secondary hover:text-dark-text transition-colors"
             >
-              ×
+              <Icon icon="mdi:close" className="w-6 h-6" />
             </button>
           </div>
 
@@ -173,7 +162,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
                   {/* Theme Info */}
                   <div className="flex-1 text-left">
                     <div className="flex items-center space-x-2 mb-1">
-                      {themeOption.icon}
+                      <Icon icon={themeOption.icon} className="w-5 h-5" />
                       <h4 className="text-dark-text font-medium">{themeOption.name}</h4>
                     </div>
                     <p className="text-sm text-dark-text-secondary">{themeOption.description}</p>
@@ -181,7 +170,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
 
                   {/* Selected Indicator */}
                   {theme === themeOption.id && (
-                    <Check className="w-5 h-5 text-primary-red flex-shrink-0" />
+                    <Icon icon="mdi:check" className="w-5 h-5 text-primary-red flex-shrink-0" />
                   )}
                 </div>
               </button>
@@ -207,7 +196,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
       >
         <div className="flex items-center space-x-3">
           <div className="p-2 bg-primary-red/20 rounded-lg">
-            <Palette className="w-5 h-5 text-primary-red" />
+            <Icon icon="mdi:palette" className="w-5 h-5 text-primary-red" />
           </div>
           <div className="text-left">
             <h3 className="text-dark-text font-medium">Theme</h3>
@@ -216,9 +205,12 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
             </p>
           </div>
         </div>
-        <ChevronDown className={`w-5 h-5 text-dark-text-secondary transition-transform ${
-          showDropdown ? 'rotate-180' : ''
-        }`} />
+        <Icon 
+          icon="mdi:chevron-down" 
+          className={`w-5 h-5 text-dark-text-secondary transition-transform ${
+            showDropdown ? 'rotate-180' : ''
+          }`} 
+        />
       </button>
 
       {showDropdown && (
@@ -248,13 +240,13 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ isModal = false, onClose 
               
               <div className="flex-1 text-left">
                 <div className="flex items-center space-x-2">
-                  {themeOption.icon}
+                  <Icon icon={themeOption.icon} className="w-4 h-4" />
                   <span className="text-dark-text font-medium">{themeOption.name}</span>
                 </div>
               </div>
 
               {theme === themeOption.id && (
-                <Check className="w-4 h-4 text-primary-red flex-shrink-0" />
+                <Icon icon="mdi:check" className="w-4 h-4 text-primary-red flex-shrink-0" />
               )}
             </button>
           ))}

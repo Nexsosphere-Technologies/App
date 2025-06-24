@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Sparkles } from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface TrustSnapshotProps {
   score: number;
@@ -24,13 +24,13 @@ const TrustSnapshot: React.FC<TrustSnapshotProps> = ({ score, maxScore }) => {
     <div className="bg-gradient-to-br from-dark-card to-dark-bg border border-dark-border rounded-2xl p-4 sm:p-6 mx-2 sm:mx-4 my-4 sm:my-6 hover-lift animate-fade-in-scale relative overflow-hidden">
       {/* Floating sparkles */}
       <div className="absolute top-4 right-4 animate-sparkle">
-        <Sparkles className="w-4 h-4 text-primary-red opacity-60" />
+        <Icon icon="mdi:sparkles" className="w-4 h-4 text-primary-red opacity-60" />
       </div>
       <div className="absolute top-8 right-8 animate-sparkle" style={{ animationDelay: '0.5s' }}>
-        <Sparkles className="w-3 h-3 text-blue-400 opacity-40" />
+        <Icon icon="mdi:sparkles" className="w-3 h-3 text-blue-400 opacity-40" />
       </div>
       <div className="absolute top-6 right-12 animate-sparkle" style={{ animationDelay: '1s' }}>
-        <Sparkles className="w-2 h-2 text-green-400 opacity-50" />
+        <Icon icon="mdi:sparkles" className="w-2 h-2 text-green-400 opacity-50" />
       </div>
 
       <h2 className="text-base sm:text-lg font-semibold text-dark-text mb-4 sm:mb-6 text-center animate-slide-in-up">
@@ -96,7 +96,7 @@ const TrustSnapshot: React.FC<TrustSnapshotProps> = ({ score, maxScore }) => {
             {getTrustLevel(score)}
           </p>
           <div className="flex items-center justify-center space-x-2 hover-scale transition-transform duration-300">
-            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 animate-bounce-gentle" />
+            <Icon icon="mdi:check-circle" className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 animate-bounce-gentle" />
             <span className="text-sm sm:text-base text-dark-text-secondary">
               DID Status: Connected
             </span>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Home, CreditCard, Star, Leaf, Settings, Sparkles } from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface NavItem {
   id: string;
-  icon: React.ReactNode;
+  icon: string;
   label: string;
 }
 
@@ -14,11 +14,11 @@ interface BottomNavigationProps {
 
 const BottomNavigation: React.FC<BottomNavigationProps> = ({ activeTab, onTabChange }) => {
   const navItems: NavItem[] = [
-    { id: 'home', icon: <Home className="w-4 h-4 sm:w-5 sm:h-5" />, label: 'Home' },
-    { id: 'identity', icon: <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />, label: 'Identity' },
-    { id: 'reputation', icon: <Star className="w-4 h-4 sm:w-5 sm:h-5" />, label: 'Reputation' },
-    { id: 'earn', icon: <Leaf className="w-4 h-4 sm:w-5 sm:h-5" />, label: 'Earn' },
-    { id: 'settings', icon: <Settings className="w-4 h-4 sm:w-5 sm:h-5" />, label: 'Settings' }
+    { id: 'home', icon: 'mdi:home', label: 'Home' },
+    { id: 'identity', icon: 'mdi:card-account-details', label: 'Identity' },
+    { id: 'reputation', icon: 'mdi:star', label: 'Reputation' },
+    { id: 'earn', icon: 'mdi:leaf', label: 'Earn' },
+    { id: 'settings', icon: 'mdi:cog', label: 'Settings' }
   ];
 
   return (
@@ -28,10 +28,10 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ activeTab, onTabCha
       
       {/* Floating sparkles */}
       <div className="absolute top-1 left-8 animate-sparkle opacity-30">
-        <Sparkles className="w-1.5 h-1.5 text-primary-red" />
+        <Icon icon="mdi:sparkles" className="w-1.5 h-1.5 text-primary-red" />
       </div>
       <div className="absolute top-2 right-12 animate-sparkle opacity-20" style={{ animationDelay: '1.5s' }}>
-        <Sparkles className="w-1 h-1 text-blue-400" />
+        <Icon icon="mdi:sparkles" className="w-1 h-1 text-blue-400" />
       </div>
 
       <div className="flex items-center justify-around py-1 sm:py-2 px-1 relative z-10">
@@ -49,7 +49,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ activeTab, onTabCha
             <div className={`flex-shrink-0 transition-transform duration-300 ${
               activeTab === item.id ? 'animate-bounce-gentle' : ''
             }`}>
-              {item.icon}
+              <Icon icon={item.icon} className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <span className="text-xs font-medium truncate w-full text-center">
               {item.label}

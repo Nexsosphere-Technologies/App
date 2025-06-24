@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Search, QrCode, Wallet, TrendingUp, Sparkles } from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface ActionButton {
-  icon: React.ReactNode;
+  icon: string;
   label: string;
   color: string;
 }
@@ -12,22 +12,22 @@ const QuickActions: React.FC = () => {
 
   const actions: ActionButton[] = [
     {
-      icon: <Search className="w-5 h-5 sm:w-6 sm:h-6" />,
+      icon: 'mdi:magnify',
       label: 'Request Credential',
       color: 'from-blue-500 to-blue-600'
     },
     {
-      icon: <QrCode className="w-5 h-5 sm:w-6 sm:h-6" />,
+      icon: 'mdi:qrcode',
       label: 'Present Credential',
       color: 'from-purple-500 to-purple-600'
     },
     {
-      icon: <Wallet className="w-5 h-5 sm:w-6 sm:h-6" />,
+      icon: 'mdi:wallet',
       label: 'View Wallet',
       color: 'from-green-500 to-green-600'
     },
     {
-      icon: <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6" />,
+      icon: 'mdi:trending-up',
       label: 'Stake NEXDEN',
       color: 'from-primary-red to-primary-red-dark'
     }
@@ -55,12 +55,12 @@ const QuickActions: React.FC = () => {
           >
             {/* Floating sparkle effect */}
             <div className="absolute top-1 right-1 animate-sparkle opacity-60">
-              <Sparkles className="w-2 h-2" />
+              <Icon icon="mdi:sparkles" className="w-2 h-2" />
             </div>
             
             <div className="flex flex-col items-center space-y-1 sm:space-y-2 relative z-10">
               <div className={`transition-transform duration-300 ${clickedIndex === index ? 'animate-wiggle' : ''}`}>
-                {action.icon}
+                <Icon icon={action.icon} className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <span className="text-xs sm:text-sm font-medium text-center leading-tight">
                 {action.label}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle, TrendingUp, Award, Sparkles, Zap } from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface ActivityItem {
   id: number;
@@ -7,7 +7,7 @@ interface ActivityItem {
   title: string;
   description: string;
   time: string;
-  icon: React.ReactNode;
+  icon: string;
   color: string;
 }
 
@@ -21,7 +21,7 @@ const RecentActivity: React.FC = () => {
       title: 'New Credential',
       description: 'University Degree issued by MIT',
       time: '2 hours ago',
-      icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" />,
+      icon: 'mdi:award',
       color: 'text-blue-500'
     },
     {
@@ -30,7 +30,7 @@ const RecentActivity: React.FC = () => {
       title: 'Reputation Update',
       description: '+5 pts from Professional Network',
       time: '5 hours ago',
-      icon: <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />,
+      icon: 'mdi:trending-up',
       color: 'text-green-500'
     },
     {
@@ -39,7 +39,7 @@ const RecentActivity: React.FC = () => {
       title: 'Staking Rewards Claimed',
       description: '0.15 NEXDEN tokens earned',
       time: '1 day ago',
-      icon: <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />,
+      icon: 'mdi:check-circle',
       color: 'text-primary-red'
     },
     {
@@ -48,7 +48,7 @@ const RecentActivity: React.FC = () => {
       title: 'Identity Verified',
       description: 'Government ID verification completed',
       time: '2 days ago',
-      icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" />,
+      icon: 'mdi:shield-check',
       color: 'text-purple-500'
     }
   ];
@@ -74,10 +74,10 @@ const RecentActivity: React.FC = () => {
             {hoveredItem === activity.id && (
               <>
                 <div className="absolute top-2 right-2 animate-sparkle">
-                  <Sparkles className="w-3 h-3 text-primary-red opacity-60" />
+                  <Icon icon="mdi:sparkles" className="w-3 h-3 text-primary-red opacity-60" />
                 </div>
                 <div className="absolute top-4 right-6 animate-sparkle" style={{ animationDelay: '0.3s' }}>
-                  <Zap className="w-2 h-2 text-yellow-400 opacity-50" />
+                  <Icon icon="mdi:lightning-bolt" className="w-2 h-2 text-yellow-400 opacity-50" />
                 </div>
               </>
             )}
@@ -86,7 +86,7 @@ const RecentActivity: React.FC = () => {
               <div className={`p-1.5 sm:p-2 rounded-lg bg-dark-bg ${activity.color} flex-shrink-0 transition-transform duration-300 ${
                 hoveredItem === activity.id ? 'animate-bounce-gentle' : ''
               }`}>
-                {activity.icon}
+                <Icon icon={activity.icon} className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between">
