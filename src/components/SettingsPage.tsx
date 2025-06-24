@@ -1,39 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  User, 
-  Shield, 
-  Lock, 
-  Globe, 
-  HelpCircle, 
-  Info, 
-  ChevronRight,
-  Eye,
-  EyeOff,
-  Fingerprint,
-  Key,
-  Smartphone,
-  Clock,
-  Languages,
-  MessageCircle,
-  Book,
-  Mail,
-  Phone,
-  ExternalLink,
-  Save,
-  Edit3,
-  Camera,
-  AlertTriangle,
-  CheckCircle,
-  Copy,
-  RefreshCw,
-  LogOut,
-  Trash2,
-  Download,
-  Upload,
-  Settings as SettingsIcon,
-  ArrowLeft,
-  Toggle
-} from 'lucide-react';
+import { User, Shield, Lock, Globe, HelpCircle, Info, ChevronRight, Eye, EyeOff, Fingerprint, Key, Smartphone, Clock, Languages, MessageCircle, Book, Mail, Phone, ExternalLink, Save, Edit3, Camera, AlertTriangle, CheckCircle, Copy, RefreshCw, LogOut, Trash2, Download, Upload, Settings as SettingsIcon, ArrowLeft, ToggleLeft as Toggle } from 'lucide-react';
 
 interface ProfileData {
   displayName: string;
