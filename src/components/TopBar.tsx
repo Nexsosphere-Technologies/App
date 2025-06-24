@@ -3,9 +3,10 @@ import { Bell, Shield, Compass } from 'lucide-react';
 
 interface TopBarProps {
   onDiscoverClick?: () => void;
+  onNotificationClick?: () => void;
 }
 
-const TopBar: React.FC<TopBarProps> = ({ onDiscoverClick }) => {
+const TopBar: React.FC<TopBarProps> = ({ onDiscoverClick, onNotificationClick }) => {
   return (
     <div className="bg-dark-bg border-b border-dark-border px-4 py-3 flex items-center justify-between">
       <div className="flex items-center space-x-2">
@@ -24,7 +25,12 @@ const TopBar: React.FC<TopBarProps> = ({ onDiscoverClick }) => {
         </button>
         
         <div className="relative">
-          <Bell className="w-6 h-6 text-dark-text-secondary hover:text-dark-text transition-colors cursor-pointer" />
+          <button
+            onClick={onNotificationClick}
+            className="text-dark-text-secondary hover:text-dark-text transition-colors"
+          >
+            <Bell className="w-6 h-6" />
+          </button>
           <div className="absolute -top-1 -right-1 bg-primary-red text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
             3
           </div>
