@@ -1,72 +1,87 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import ErrorBoundary from './components/ErrorBoundary';
-import LoadingScreen from './components/LoadingScreen';
+import React, { useState, useEffect } from 'react';
 import TopBar from './components/TopBar';
 import TrustSnapshot from './components/TrustSnapshot';
 import QuickActions from './components/QuickActions';
 import RecentActivity from './components/RecentActivity';
 import BottomNavigation from './components/BottomNavigation';
+import IdentityPage from './components/IdentityPage';
+import ReputationPage from './components/ReputationPage';
+import EarnPage from './components/EarnPage';
+import DiscoverPage from './components/DiscoverPage';
+import NotificationsPage from './components/NotificationsPage';
+import SettingsPage from './components/SettingsPage';
 import OnboardingFlow from './components/OnboardingFlow';
-
-// Lazy load components for better performance
-const IdentityPage = React.lazy(() => import('./components/IdentityPage'));
-const ReputationPage = React.lazy(() => import('./components/ReputationPage'));
-const EarnPage = React.lazy(() => import('./components/EarnPage'));
-const DiscoverPage = React.lazy(() => import('./components/DiscoverPage'));
-const NotificationsPage = React.lazy(() => import('./components/NotificationsPage'));
-const SettingsPage = React.lazy(() => import('./components/SettingsPage'));
-
-// Import utilities
-import { config, validateEnvironment } from './config/environment';
-import { analytics, trackPageView } from './utils/analytics';
-import { performanceMonitor } from './utils/performance';
-import { errorHandler } from './utils/errorHandler';
+import ErrorBoundary from './components/ErrorBoundary';
+import LoadingScreen from './components/LoadingScreen';
+import { environment, isDevelopment } from './config/environment';
+import { ErrorHandler } from './utils/errorHandler';
+import { PerformanceMonitor } from './utils/performance';
+import { Analytics } from './utils/analytics';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [isOnboarded, setIsOnboarded] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isInitialized, setIsInitialized] = useState(false);
   const [initError, setInitError] = useState<string | null>(null);
 
   useEffect(() => {
     initializeApp();
   }, []);
 
-  useEffect(() => {
-    // Track page views
-    trackPageView(activeTab);
-  }, [activeTab]);
-
   const initializeApp = async () => {
     try {
-      // Validate environment
-      if (!validateEnvironment()) {
-        throw new Error('Invalid environment configuration');
+      // Initialize error handler
+      ErrorHandler.initialize({
+        enableReporting: environment.ENABLE_ERROR_REPORTING,
+        enableLogging: environment.ENABLE_DEBUG,
+        environment: environment.APP_ENV
+      });
+
+      // Initialize performance monitoring
+      if (environment.ENABLE_ANALYTICS) {
+        PerformanceMonitor.initialize();
       }
 
-      // Initialize monitoring
-      performanceMonitor.init();
-      analytics.init();
+      // Initialize analytics
+      if (environment.ENABLE_ANALYTICS && environment.GA_TRACKING_ID) {
+        Analytics.initialize(environment.GA_TRACKING_ID);
+      }
 
       // Check onboarding status
       const onboardingComplete = localStorage.getItem('nexdentify-onboarded');
       setIsOnboarded(!!onboardingComplete);
 
-      // Simulate app initialization
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Log successful initialization in development
+      if (isDevelopment) {
+        console.log('✅ NexDentify initialized successfully');
+        console.log('🌐 Network:', environment.ALGORAND_NETWORK);
+        console.log('🔗 Algod Server:', environment.ALGOD_SERVER);
+        console.log('📊 Indexer Server:', environment.INDEXER_SERVER);
+      }
 
+      setIsInitialized(true);
     } catch (error) {
-      console.error('App initialization failed:', error);
-      errorHandler.handleError(error as Error, { context: 'app_initialization' });
-      setInitError((error as Error).message);
-    } finally {
-      setIsLoading(false);
+      console.error('Failed to initialize app:', error);
+      
+      // In development, continue with limited functionality
+      if (isDevelopment) {
+        console.warn('⚠️ App initialization failed, continuing with limited functionality');
+        setInitError('Development mode: Some features may not work properly due to configuration issues.');
+        setIsInitialized(true);
+        
+        // Check onboarding status even if initialization failed
+        const onboardingComplete = localStorage.getItem('nexdentify-onboarded');
+        setIsOnboarded(!!onboardingComplete);
+      } else {
+        // In production, show error
+        setInitError('Failed to initialize application. Please check your configuration.');
+        ErrorHandler.handleError(error as Error, 'App initialization failed');
+      }
     }
   };
 
   const handleOnboardingComplete = () => {
     setIsOnboarded(true);
-    trackPageView('onboarding_complete');
   };
 
   const handleDiscoverClick = () => {
@@ -77,25 +92,22 @@ function App() {
     setActiveTab('notifications');
   };
 
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-  };
-
-  // Show loading screen during initialization
-  if (isLoading) {
+  // Show loading screen while initializing
+  if (!isInitialized) {
     return <LoadingScreen message="Initializing NexDentify..." />;
   }
 
-  // Show error screen if initialization failed
-  if (initError) {
+  // Show error screen if initialization failed in production
+  if (initError && !isDevelopment) {
     return (
       <div className="min-h-screen bg-dark-bg flex items-center justify-center p-4">
-        <div className="text-center space-y-4">
-          <h2 className="text-xl font-semibold text-red-400">Initialization Failed</h2>
+        <div className="text-center space-y-4 max-w-md">
+          <div className="text-red-500 text-6xl mb-4">⚠️</div>
+          <h1 className="text-2xl font-bold text-dark-text">Initialization Error</h1>
           <p className="text-dark-text-secondary">{initError}</p>
           <button
             onClick={() => window.location.reload()}
-            className="bg-gradient-to-r from-primary-red to-primary-red-dark text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity"
+            className="bg-primary-red text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
           >
             Retry
           </button>
@@ -104,10 +116,20 @@ function App() {
     );
   }
 
+  // Show development warning if there are configuration issues
+  const showDevWarning = isDevelopment && initError;
+
   // Show onboarding flow if user hasn't completed it
   if (!isOnboarded) {
     return (
       <ErrorBoundary>
+        {showDevWarning && (
+          <div className="bg-yellow-500/10 border-b border-yellow-500/30 p-3 text-center">
+            <p className="text-yellow-400 text-sm">
+              <strong>Development Mode:</strong> {initError}
+            </p>
+          </div>
+        )}
         <OnboardingFlow onComplete={handleOnboardingComplete} />
       </ErrorBoundary>
     );
@@ -116,41 +138,17 @@ function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'identity':
-        return (
-          <Suspense fallback={<LoadingScreen message="Loading Identity..." />}>
-            <IdentityPage />
-          </Suspense>
-        );
+        return <IdentityPage />;
       case 'reputation':
-        return (
-          <Suspense fallback={<LoadingScreen message="Loading Reputation..." />}>
-            <ReputationPage />
-          </Suspense>
-        );
+        return <ReputationPage />;
       case 'earn':
-        return (
-          <Suspense fallback={<LoadingScreen message="Loading Earn..." />}>
-            <EarnPage />
-          </Suspense>
-        );
+        return <EarnPage />;
       case 'discover':
-        return (
-          <Suspense fallback={<LoadingScreen message="Loading Discover..." />}>
-            <DiscoverPage />
-          </Suspense>
-        );
+        return <DiscoverPage />;
       case 'notifications':
-        return (
-          <Suspense fallback={<LoadingScreen message="Loading Notifications..." />}>
-            <NotificationsPage />
-          </Suspense>
-        );
+        return <NotificationsPage />;
       case 'settings':
-        return (
-          <Suspense fallback={<LoadingScreen message="Loading Settings..." />}>
-            <SettingsPage />
-          </Suspense>
-        );
+        return <SettingsPage />;
       default:
         return (
           <div className="max-w-md mx-auto">
@@ -165,19 +163,19 @@ function App() {
   return (
     <ErrorBoundary>
       <div className="min-h-screen bg-dark-bg text-dark-text">
+        {showDevWarning && (
+          <div className="bg-yellow-500/10 border-b border-yellow-500/30 p-3 text-center">
+            <p className="text-yellow-400 text-sm">
+              <strong>Development Mode:</strong> {initError}
+            </p>
+          </div>
+        )}
         <TopBar 
           onDiscoverClick={handleDiscoverClick}
           onNotificationClick={handleNotificationClick}
         />
-        
-        <main>
-          {renderContent()}
-        </main>
-        
-        <BottomNavigation 
-          activeTab={activeTab} 
-          onTabChange={handleTabChange} 
-        />
+        {renderContent()}
+        <BottomNavigation activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
     </ErrorBoundary>
   );
