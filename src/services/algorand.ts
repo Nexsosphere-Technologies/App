@@ -1,18 +1,19 @@
 import algosdk from 'algosdk';
+import { environment } from '../config/environment';
 
 /**
  * Algorand Service
  * Handles all interactions with Algorand blockchain and smart contracts
  */
 
-// Contract addresses and IDs (these would be set after deployment)
+// Contract addresses and IDs from environment configuration
 export const CONTRACT_IDS = {
-  NEXDEN_TOKEN: 0, // ASA ID
-  DID_REGISTRY: 0,
-  VC_REGISTRY: 0,
-  REPUTATION_SYSTEM: 0,
-  STAKING_CONTRACT: 0,
-  LP_FARMING: 0,
+  NEXDEN_TOKEN: environment.contracts.nexdenToken,
+  DID_REGISTRY: environment.contracts.didRegistry,
+  VC_REGISTRY: environment.contracts.vcRegistry,
+  REPUTATION_SYSTEM: environment.contracts.reputationSystem,
+  STAKING_CONTRACT: environment.contracts.stakingContract,
+  LP_FARMING: environment.contracts.lpFarming,
 };
 
 // Algorand client configuration
@@ -115,6 +116,11 @@ export class DIDService {
   ): Promise<string> {
     const account = this.walletService.getAccount();
     if (!account) throw new Error('Wallet not connected');
+
+    // Check if DID registry contract is deployed
+    if (!CONTRACT_IDS.DID_REGISTRY || CONTRACT_IDS.DID_REGISTRY === 0) {
+      throw new Error('DID Registry contract not deployed. Please deploy contracts first.');
+    }
 
     try {
       // Create application call transaction
@@ -660,6 +666,11 @@ export class FarmingService {
   async claimFarmRewards(farmId: number): Promise<string> {
     const account = this.walletService.getAccount();
     if (!account) throw new Error('Wallet not connected');
+
+    // Check if LP farming contract is deployed
+    if (!CONTRACT_IDS.LP_FARMING || CONTRACT_IDS.LP_FARMING === 0) {
+      throw new Error('LP Farming contract not deployed. Please deploy contracts first.');
+    }
 
     try {
       const suggestedParams = await algodClient.getTransactionParams().do();
