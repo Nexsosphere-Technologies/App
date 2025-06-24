@@ -26,7 +26,7 @@ const IdentityPage: React.FC = () => {
       issuer: 'Massachusetts Institute of Technology',
       status: 'verified',
       expiry: '2028-05-15',
-      icon: <GraduationCap className="w-6 h-6" />,
+      icon: <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />,
       color: 'from-blue-500 to-blue-600',
       description: 'Bachelor of Science in Computer Science',
       claims: {
@@ -43,7 +43,7 @@ const IdentityPage: React.FC = () => {
       title: 'Employment Verification',
       issuer: 'TechCorp Solutions',
       status: 'verified',
-      icon: <Briefcase className="w-6 h-6" />,
+      icon: <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />,
       color: 'from-green-500 to-green-600',
       description: 'Senior Software Engineer',
       claims: {
@@ -61,7 +61,7 @@ const IdentityPage: React.FC = () => {
       issuer: 'City Health Department',
       status: 'verified',
       expiry: '2025-03-20',
-      icon: <Shield className="w-6 h-6" />,
+      icon: <Shield className="w-5 h-5 sm:w-6 sm:h-6" />,
       color: 'from-purple-500 to-purple-600',
       description: 'Full COVID-19 Vaccination Certificate',
       claims: {
@@ -78,7 +78,7 @@ const IdentityPage: React.FC = () => {
       title: 'Professional Certification',
       issuer: 'Algorand Foundation',
       status: 'pending',
-      icon: <Award className="w-6 h-6" />,
+      icon: <Award className="w-5 h-5 sm:w-6 sm:h-6" />,
       color: 'from-orange-500 to-orange-600',
       description: 'Certified Algorand Developer',
       claims: {
@@ -93,11 +93,11 @@ const IdentityPage: React.FC = () => {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'verified':
-        return <CheckCircle className="w-5 h-5 text-green-500" />;
+        return <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />;
       case 'pending':
-        return <Clock className="w-5 h-5 text-yellow-500" />;
+        return <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-500" />;
       case 'revoked':
-        return <X className="w-5 h-5 text-red-500" />;
+        return <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />;
       default:
         return null;
     }
@@ -120,7 +120,7 @@ const IdentityPage: React.FC = () => {
     return (
       <div className="min-h-screen bg-dark-bg pb-20">
         {/* Header */}
-        <div className="bg-dark-card border-b border-dark-border px-4 py-4 flex items-center space-x-3">
+        <div className="bg-dark-card border-b border-dark-border px-3 sm:px-4 py-3 sm:py-4 flex items-center space-x-3">
           <button
             onClick={() => {
               setSelectedCredential(null);
@@ -128,34 +128,34 @@ const IdentityPage: React.FC = () => {
             }}
             className="text-dark-text-secondary hover:text-dark-text transition-colors"
           >
-            <ArrowLeft className="w-6 h-6" />
+            <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
-          <h1 className="text-xl font-semibold text-dark-text">Credential Details</h1>
+          <h1 className="text-lg sm:text-xl font-semibold text-dark-text">Credential Details</h1>
         </div>
 
-        <div className="px-4 py-6 space-y-6">
+        <div className="px-3 sm:px-4 py-4 sm:py-6 space-y-4 sm:space-y-6">
           {/* Credential Header */}
-          <div className="text-center space-y-4">
-            <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${selectedCredential.color}`}>
+          <div className="text-center space-y-3 sm:space-y-4">
+            <div className={`inline-flex p-3 sm:p-4 rounded-2xl bg-gradient-to-br ${selectedCredential.color}`}>
               {selectedCredential.icon}
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-dark-text mb-2">{selectedCredential.title}</h2>
-              <p className="text-dark-text-secondary">{selectedCredential.description}</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-dark-text mb-2">{selectedCredential.title}</h2>
+              <p className="text-sm sm:text-base text-dark-text-secondary">{selectedCredential.description}</p>
             </div>
           </div>
 
           {/* Issuer Info */}
-          <div className="bg-dark-card border border-dark-border rounded-xl p-4">
+          <div className="bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-dark-bg rounded-lg flex items-center justify-center">
-                <Shield className="w-6 h-6 text-primary-red" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dark-bg rounded-lg flex items-center justify-center flex-shrink-0">
+                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-primary-red" />
               </div>
-              <div>
-                <p className="text-sm text-dark-text-secondary">Issued by</p>
-                <p className="text-dark-text font-medium">{selectedCredential.issuer}</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs sm:text-sm text-dark-text-secondary">Issued by</p>
+                <p className="text-sm sm:text-base text-dark-text font-medium truncate">{selectedCredential.issuer}</p>
               </div>
-              <div className="ml-auto">
+              <div className="flex-shrink-0">
                 {getStatusIcon(selectedCredential.status)}
               </div>
             </div>
@@ -165,31 +165,31 @@ const IdentityPage: React.FC = () => {
           {selectedCredential.status === 'verified' && (
             <button
               onClick={() => setShowQRCode(!showQRCode)}
-              className="w-full bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
+              className="w-full bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-3 sm:py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
             >
-              <QrCode className="w-5 h-5" />
-              <span>{showQRCode ? 'Hide QR Code' : 'Present Credential'}</span>
+              <QrCode className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base">{showQRCode ? 'Hide QR Code' : 'Present Credential'}</span>
             </button>
           )}
 
           {/* QR Code */}
           {showQRCode && (
-            <div className="bg-white p-6 rounded-xl text-center">
-              <div className="w-48 h-48 bg-gray-200 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                <QrCode className="w-16 h-16 text-gray-400" />
+            <div className="bg-white p-4 sm:p-6 rounded-xl text-center">
+              <div className="w-40 h-40 sm:w-48 sm:h-48 bg-gray-200 rounded-lg mx-auto mb-3 sm:mb-4 flex items-center justify-center">
+                <QrCode className="w-12 h-12 sm:w-16 sm:h-16 text-gray-400" />
               </div>
-              <p className="text-gray-600 text-sm">Scan this QR code to verify credential</p>
+              <p className="text-gray-600 text-xs sm:text-sm">Scan this QR code to verify credential</p>
             </div>
           )}
 
           {/* Key Claims */}
-          <div className="bg-dark-card border border-dark-border rounded-xl p-4">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Key Claims</h3>
-            <div className="space-y-3">
+          <div className="bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4">
+            <h3 className="text-base sm:text-lg font-semibold text-dark-text mb-3 sm:mb-4">Key Claims</h3>
+            <div className="space-y-2 sm:space-y-3">
               {Object.entries(selectedCredential.claims).map(([key, value]) => (
-                <div key={key} className="flex justify-between items-center py-2 border-b border-dark-border last:border-b-0">
-                  <span className="text-dark-text-secondary">{key}:</span>
-                  <span className="text-dark-text font-medium">{value}</span>
+                <div key={key} className="flex justify-between items-start py-2 border-b border-dark-border last:border-b-0 gap-3">
+                  <span className="text-xs sm:text-sm text-dark-text-secondary flex-shrink-0">{key}:</span>
+                  <span className="text-xs sm:text-sm text-dark-text font-medium text-right break-words">{value}</span>
                 </div>
               ))}
             </div>
@@ -197,18 +197,18 @@ const IdentityPage: React.FC = () => {
 
           {/* Expiry */}
           {selectedCredential.expiry && (
-            <div className="bg-dark-card border border-dark-border rounded-xl p-4">
+            <div className="bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4">
               <div className="flex justify-between items-center">
-                <span className="text-dark-text-secondary">Expires:</span>
-                <span className="text-dark-text font-medium">{selectedCredential.expiry}</span>
+                <span className="text-sm text-dark-text-secondary">Expires:</span>
+                <span className="text-sm text-dark-text font-medium">{selectedCredential.expiry}</span>
               </div>
             </div>
           )}
 
           {/* View Raw Credential */}
           <button className="w-full text-dark-text-secondary hover:text-dark-text transition-colors flex items-center justify-center space-x-2 py-2">
-            <ExternalLink className="w-4 h-4" />
-            <span className="text-sm">View Raw Credential</span>
+            <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="text-xs sm:text-sm">View Raw Credential</span>
           </button>
         </div>
       </div>
@@ -218,23 +218,23 @@ const IdentityPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-dark-bg pb-20">
       {/* Header */}
-      <div className="bg-dark-card border-b border-dark-border px-4 py-4 flex items-center justify-between">
-        <h1 className="text-xl font-semibold text-dark-text">My Identity</h1>
+      <div className="bg-dark-card border-b border-dark-border px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
+        <h1 className="text-lg sm:text-xl font-semibold text-dark-text">My Identity</h1>
         <button className="text-primary-red hover:text-primary-red-light transition-colors">
-          <Plus className="w-6 h-6" />
+          <Plus className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       </div>
 
-      <div className="px-4 py-6 space-y-6">
+      <div className="px-3 sm:px-4 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* My DIDs Card */}
-        <div className="bg-dark-card border border-dark-border rounded-xl p-4">
-          <h3 className="text-lg font-semibold text-dark-text mb-3">My DIDs</h3>
+        <div className="bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4">
+          <h3 className="text-base sm:text-lg font-semibold text-dark-text mb-3">My DIDs</h3>
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-dark-text font-medium">Primary DID</p>
-              <p className="text-sm text-dark-text-secondary font-mono">did:algo:mainnet:7ZUECA7...</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm sm:text-base text-dark-text font-medium">Primary DID</p>
+              <p className="text-xs sm:text-sm text-dark-text-secondary font-mono truncate">did:algo:mainnet:7ZUECA7...</p>
             </div>
-            <button className="text-primary-red hover:text-primary-red-light transition-colors text-sm">
+            <button className="text-primary-red hover:text-primary-red-light transition-colors text-xs sm:text-sm flex-shrink-0 ml-3">
               Switch
             </button>
           </div>
@@ -242,28 +242,30 @@ const IdentityPage: React.FC = () => {
 
         {/* Verifiable Credentials */}
         <div>
-          <h3 className="text-lg font-semibold text-dark-text mb-4">Verifiable Credentials</h3>
-          <div className="space-y-3">
+          <h3 className="text-base sm:text-lg font-semibold text-dark-text mb-3 sm:mb-4">Verifiable Credentials</h3>
+          <div className="space-y-2 sm:space-y-3">
             {credentials.map((credential) => (
               <button
                 key={credential.id}
                 onClick={() => setSelectedCredential(credential)}
-                className="w-full bg-dark-card border border-dark-border rounded-xl p-4 hover:border-primary-red-light/30 transition-colors text-left"
+                className="w-full bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4 hover:border-primary-red-light/30 transition-colors text-left"
               >
-                <div className="flex items-start space-x-4">
-                  <div className={`p-3 rounded-lg bg-gradient-to-br ${credential.color} flex-shrink-0`}>
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div className={`p-2 sm:p-3 rounded-lg bg-gradient-to-br ${credential.color} flex-shrink-0`}>
                     {credential.icon}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1">
-                      <h4 className="text-dark-text font-medium truncate">{credential.title}</h4>
-                      {getStatusIcon(credential.status)}
+                    <div className="flex items-start justify-between mb-1 gap-2">
+                      <h4 className="text-sm sm:text-base text-dark-text font-medium truncate">{credential.title}</h4>
+                      <div className="flex-shrink-0">
+                        {getStatusIcon(credential.status)}
+                      </div>
                     </div>
-                    <p className="text-sm text-dark-text-secondary mb-1">
+                    <p className="text-xs sm:text-sm text-dark-text-secondary mb-1 truncate">
                       Issued by {credential.issuer}
                     </p>
-                    <div className="flex items-center justify-between">
-                      <span className={`text-xs px-2 py-1 rounded-full ${
+                    <div className="flex items-center justify-between gap-2">
+                      <span className={`text-xs px-2 py-1 rounded-full flex-shrink-0 ${
                         credential.status === 'verified' ? 'bg-green-500/20 text-green-400' :
                         credential.status === 'pending' ? 'bg-yellow-500/20 text-yellow-400' :
                         'bg-red-500/20 text-red-400'
@@ -271,7 +273,7 @@ const IdentityPage: React.FC = () => {
                         {getStatusText(credential.status)}
                       </span>
                       {credential.expiry && (
-                        <span className="text-xs text-dark-text-secondary">
+                        <span className="text-xs text-dark-text-secondary truncate">
                           Expires: {credential.expiry}
                         </span>
                       )}

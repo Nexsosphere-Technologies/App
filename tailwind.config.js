@@ -24,6 +24,9 @@ export default {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
+      spacing: {
+        'safe-area-bottom': 'env(safe-area-inset-bottom)',
+      },
     },
   },
   plugins: [],

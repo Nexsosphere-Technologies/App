@@ -21,12 +21,12 @@ const TrustSnapshot: React.FC<TrustSnapshotProps> = ({ score, maxScore }) => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-dark-card to-dark-bg border border-dark-border rounded-2xl p-6 mx-4 my-6">
-      <h2 className="text-lg font-semibold text-dark-text mb-6 text-center">Your Trust Snapshot</h2>
+    <div className="bg-gradient-to-br from-dark-card to-dark-bg border border-dark-border rounded-2xl p-4 sm:p-6 mx-2 sm:mx-4 my-4 sm:my-6">
+      <h2 className="text-base sm:text-lg font-semibold text-dark-text mb-4 sm:mb-6 text-center">Your Trust Snapshot</h2>
       
-      <div className="flex flex-col items-center space-y-4">
-        <div className="relative w-48 h-48">
-          <svg className="transform -rotate-90 w-48 h-48" viewBox="0 0 180 180">
+      <div className="flex flex-col items-center space-y-3 sm:space-y-4">
+        <div className="relative w-32 h-32 sm:w-48 sm:h-48">
+          <svg className="transform -rotate-90 w-32 h-32 sm:w-48 sm:h-48" viewBox="0 0 180 180">
             {/* Background circle */}
             <circle
               cx="90"
@@ -58,16 +58,16 @@ const TrustSnapshot: React.FC<TrustSnapshotProps> = ({ score, maxScore }) => {
           </svg>
           
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-4xl font-bold text-green-500">{score}</span>
-            <span className="text-lg text-dark-text-secondary">/{maxScore}</span>
+            <span className="text-2xl sm:text-4xl font-bold text-green-500">{score}</span>
+            <span className="text-sm sm:text-lg text-dark-text-secondary">/{maxScore}</span>
           </div>
         </div>
         
         <div className="text-center">
-          <p className="text-xl font-semibold text-dark-text mb-2">{getTrustLevel(score)}</p>
+          <p className="text-lg sm:text-xl font-semibold text-dark-text mb-2">{getTrustLevel(score)}</p>
           <div className="flex items-center justify-center space-x-2">
-            <CheckCircle className="w-5 h-5 text-green-500" />
-            <span className="text-dark-text-secondary">DID Status: Connected</span>
+            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0" />
+            <span className="text-sm sm:text-base text-dark-text-secondary">DID Status: Connected</span>
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ const RecentActivity: React.FC = () => {
       title: 'New Credential',
       description: 'University Degree issued by MIT',
       time: '2 hours ago',
-      icon: <Award className="w-5 h-5" />,
+      icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" />,
       color: 'text-blue-500'
     },
     {
@@ -28,7 +28,7 @@ const RecentActivity: React.FC = () => {
       title: 'Reputation Update',
       description: '+5 pts from Professional Network',
       time: '5 hours ago',
-      icon: <TrendingUp className="w-5 h-5" />,
+      icon: <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />,
       color: 'text-green-500'
     },
     {
@@ -37,7 +37,7 @@ const RecentActivity: React.FC = () => {
       title: 'Staking Rewards Claimed',
       description: '0.15 NEXDEN tokens earned',
       time: '1 day ago',
-      icon: <CheckCircle className="w-5 h-5" />,
+      icon: <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />,
       color: 'text-primary-red'
     },
     {
@@ -46,34 +46,34 @@ const RecentActivity: React.FC = () => {
       title: 'Identity Verified',
       description: 'Government ID verification completed',
       time: '2 days ago',
-      icon: <Award className="w-5 h-5" />,
+      icon: <Award className="w-4 h-4 sm:w-5 sm:h-5" />,
       color: 'text-purple-500'
     }
   ];
 
   return (
-    <div className="px-4 mb-20">
-      <h3 className="text-lg font-semibold text-dark-text mb-4">Recent Activity</h3>
-      <div className="space-y-3">
+    <div className="px-2 sm:px-4 mb-20">
+      <h3 className="text-base sm:text-lg font-semibold text-dark-text mb-3 sm:mb-4 px-2">Recent Activity</h3>
+      <div className="space-y-2 sm:space-y-3 px-2">
         {activities.map((activity) => (
           <div
             key={activity.id}
-            className="bg-dark-card border border-dark-border rounded-xl p-4 hover:border-primary-red-light/30 transition-colors"
+            className="bg-dark-card border border-dark-border rounded-xl p-3 sm:p-4 hover:border-primary-red-light/30 transition-colors"
           >
             <div className="flex items-start space-x-3">
-              <div className={`p-2 rounded-lg bg-dark-bg ${activity.color}`}>
+              <div className={`p-1.5 sm:p-2 rounded-lg bg-dark-bg ${activity.color} flex-shrink-0`}>
                 {activity.icon}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-dark-text font-medium truncate">
+                <div className="flex items-start justify-between">
+                  <h4 className="text-sm sm:text-base text-dark-text font-medium truncate pr-2">
                     {activity.title}
                   </h4>
-                  <span className="text-xs text-dark-text-secondary flex-shrink-0 ml-2">
+                  <span className="text-xs text-dark-text-secondary flex-shrink-0 whitespace-nowrap">
                     {activity.time}
                   </span>
                 </div>
-                <p className="text-sm text-dark-text-secondary mt-1">
+                <p className="text-xs sm:text-sm text-dark-text-secondary mt-1 line-clamp-2">
                   {activity.description}
                 </p>
               </div>
