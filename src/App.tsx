@@ -16,7 +16,7 @@ import LoadingScreen from './components/LoadingScreen';
 import { environment, isDevelopment } from './config/environment';
 import { ErrorHandler } from './utils/errorHandler';
 import { PerformanceMonitor } from './utils/performance';
-import { Analytics } from './utils/analytics';
+import { analytics } from './utils/analytics';
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -44,7 +44,7 @@ function App() {
 
       // Initialize analytics
       if (environment.ENABLE_ANALYTICS && environment.GA_TRACKING_ID) {
-        Analytics.initialize(environment.GA_TRACKING_ID);
+        analytics.init();
       }
 
       // Check onboarding status
