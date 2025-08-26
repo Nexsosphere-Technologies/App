@@ -1,22 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Play, 
-  Pause, 
-  Volume2, 
-  VolumeX, 
-  RotateCcw, 
-  SkipForward, 
-  SkipBack,
-  Maximize,
-  Settings,
-  User,
-  CheckCircle,
-  ArrowRight,
-  ExternalLink,
-  BookOpen,
-  MessageCircle,
-  HelpCircle
-} from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface TutorialVideoProps {
   onComplete: () => void;
@@ -180,7 +163,7 @@ const TutorialVideo: React.FC<TutorialVideoProps> = ({ onComplete, onSkip }) => 
           {/* AI Avatar */}
           <div className="text-center space-y-4">
             <div className="w-24 h-24 bg-gradient-to-br from-primary-red to-primary-red-dark rounded-full flex items-center justify-center mx-auto">
-              <User className="w-12 h-12 text-white" />
+              <Icon icon="mdi:account" className="w-12 h-12 text-white" />
             </div>
             <div>
               <h3 className="text-white font-semibold text-xl">AI Guide - Alex</h3>
@@ -195,9 +178,9 @@ const TutorialVideo: React.FC<TutorialVideoProps> = ({ onComplete, onSkip }) => 
           >
             <div className="bg-black/50 rounded-full p-4 group-hover:scale-110 transition-transform">
               {isPlaying ? (
-                <Pause className="w-12 h-12 text-white" />
+                <Icon icon="mdi:pause" className="w-12 h-12 text-white" />
               ) : (
-                <Play className="w-12 h-12 text-white ml-1" />
+                <Icon icon="mdi:play" className="w-12 h-12 text-white" />
               )}
             </div>
           </button>
@@ -211,7 +194,7 @@ const TutorialVideo: React.FC<TutorialVideoProps> = ({ onComplete, onSkip }) => 
 
           {/* Settings Button */}
           <button className="absolute top-4 right-4 bg-black/50 rounded-lg p-2 text-white hover:bg-black/70 transition-colors">
-            <Settings className="w-5 h-5" />
+            <Icon icon="mdi:cog" className="w-5 h-5" />
           </button>
         </div>
 
@@ -238,28 +221,28 @@ const TutorialVideo: React.FC<TutorialVideoProps> = ({ onComplete, onSkip }) => 
                 onClick={() => handleSeek(Math.max(0, currentTime - 10))}
                 className="text-dark-text hover:text-primary-red transition-colors"
               >
-                <SkipBack className="w-5 h-5" />
+                <Icon icon="mdi:skip-backward" className="w-5 h-5" />
               </button>
               
               <button
                 onClick={handlePlayPause}
                 className="text-dark-text hover:text-primary-red transition-colors"
               >
-                {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+                {isPlaying ? <Icon icon="mdi:pause" className="w-6 h-6" /> : <Icon icon="mdi:play" className="w-6 h-6" />}
               </button>
 
               <button
                 onClick={() => handleSeek(Math.min(totalDuration, currentTime + 10))}
                 className="text-dark-text hover:text-primary-red transition-colors"
               >
-                <SkipForward className="w-5 h-5" />
+                <Icon icon="mdi:skip-forward" className="w-5 h-5" />
               </button>
               
               <button
                 onClick={() => setIsMuted(!isMuted)}
                 className="text-dark-text hover:text-primary-red transition-colors"
               >
-                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                {isMuted ? <Icon icon="mdi:volume-off" className="w-5 h-5" /> : <Icon icon="mdi:volume-high" className="w-5 h-5" />}
               </button>
 
               <select
@@ -281,10 +264,10 @@ const TutorialVideo: React.FC<TutorialVideoProps> = ({ onComplete, onSkip }) => 
                 onClick={() => setShowTranscript(!showTranscript)}
                 className="text-dark-text-secondary hover:text-dark-text transition-colors"
               >
-                <BookOpen className="w-5 h-5" />
+                <Icon icon="mdi:book-open" className="w-5 h-5" />
               </button>
               <button className="text-dark-text-secondary hover:text-dark-text transition-colors">
-                <Maximize className="w-5 h-5" />
+                <Icon icon="mdi:fullscreen" className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -315,7 +298,7 @@ const TutorialVideo: React.FC<TutorialVideoProps> = ({ onComplete, onSkip }) => 
                       : 'bg-dark-bg'
                   }`}>
                     {chapter.completed ? (
-                      <CheckCircle className="w-4 h-4 text-white" />
+                      <Icon icon="mdi:check-circle" className="w-4 h-4 text-white" />
                     ) : (
                       <span className="text-white text-sm font-medium">{index + 1}</span>
                     )}
@@ -353,19 +336,19 @@ const TutorialVideo: React.FC<TutorialVideoProps> = ({ onComplete, onSkip }) => 
         <h3 className="text-dark-text font-semibold mb-4">Additional Resources</h3>
         <div className="grid grid-cols-2 gap-3">
           <button className="bg-dark-bg border border-dark-border rounded-lg p-3 hover:border-primary-red-light/30 transition-colors flex items-center space-x-2">
-            <BookOpen className="w-5 h-5 text-blue-500" />
+            <Icon icon="mdi:book-open" className="w-5 h-5 text-blue-500" />
             <span className="text-dark-text text-sm">Documentation</span>
           </button>
           <button className="bg-dark-bg border border-dark-border rounded-lg p-3 hover:border-primary-red-light/30 transition-colors flex items-center space-x-2">
-            <MessageCircle className="w-5 h-5 text-green-500" />
+            <Icon icon="mdi:message-text" className="w-5 h-5 text-green-500" />
             <span className="text-dark-text text-sm">Community</span>
           </button>
           <button className="bg-dark-bg border border-dark-border rounded-lg p-3 hover:border-primary-red-light/30 transition-colors flex items-center space-x-2">
-            <HelpCircle className="w-5 h-5 text-purple-500" />
+            <Icon icon="mdi:help-circle" className="w-5 h-5 text-purple-500" />
             <span className="text-dark-text text-sm">FAQ</span>
           </button>
           <button className="bg-dark-bg border border-dark-border rounded-lg p-3 hover:border-primary-red-light/30 transition-colors flex items-center space-x-2">
-            <ExternalLink className="w-5 h-5 text-orange-500" />
+            <Icon icon="mdi:open-in-new" className="w-5 h-5 text-orange-500" />
             <span className="text-dark-text text-sm">API Docs</span>
           </button>
         </div>
@@ -384,7 +367,7 @@ const TutorialVideo: React.FC<TutorialVideoProps> = ({ onComplete, onSkip }) => 
           className="flex-1 bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity flex items-center justify-center space-x-2"
         >
           <span>Complete Setup</span>
-          <ArrowRight className="w-4 h-4" />
+          <Icon icon="mdi:arrow-right" className="w-4 h-4" />
         </button>
       </div>
     </div>

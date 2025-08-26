@@ -58,7 +58,7 @@ export default defineConfig({
   
   // Dependency optimization
   optimizeDeps: {
-    include: ['react', 'react-dom', 'algosdk', 'lucide-react'],
+    include: ['react', 'react-dom', 'algosdk', '@iconify/react'],
   },
   
   // Environment variables

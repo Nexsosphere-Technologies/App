@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Loader2 } from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface LoadingScreenProps {
   message?: string;
@@ -16,12 +16,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
         {/* Logo */}
         <div className="relative">
           <div className="w-20 h-20 bg-gradient-to-br from-primary-red to-primary-red-dark rounded-2xl flex items-center justify-center mx-auto animate-pulse-glow">
-            <Shield className="w-10 h-10 text-white" />
+            <Icon icon="mdi:shield-check" className="w-10 h-10 text-white" />
           </div>
           
           {/* Spinning loader */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <Loader2 className="w-24 h-24 text-primary-red animate-spin opacity-30" />
+            <Icon icon="mdi:loading" className="w-24 h-24 text-primary-red animate-spin opacity-30" />
           </div>
         </div>
 

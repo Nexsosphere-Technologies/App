@@ -1,20 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  Shield, 
-  Star, 
-  Coins, 
-  Users, 
-  TrendingUp, 
-  Lock, 
-  Globe, 
-  Award, 
-  CheckCircle, 
-  ArrowRight,
-  Key,
-  Eye,
-  Fingerprint,
-  Smartphone
-} from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface WelcomeScreensProps {
   onGetStarted: () => void;
@@ -29,7 +14,7 @@ const WelcomeScreens: React.FC<WelcomeScreensProps> = ({ onGetStarted }) => {
       title: 'Welcome to NexDentify',
       subtitle: 'Your Gateway to Decentralized Identity',
       description: 'Take control of your digital identity with blockchain-powered verifiable credentials and reputation management.',
-      icon: <Shield className="w-16 h-16 text-white" />,
+      icon: <Icon icon="mdi:shield-check" className="w-16 h-16 text-white" />,
       gradient: 'from-primary-red to-primary-red-dark',
       features: [
         'Decentralized Identity (DID) Management',
@@ -43,7 +28,7 @@ const WelcomeScreens: React.FC<WelcomeScreensProps> = ({ onGetStarted }) => {
       title: 'Own Your Identity',
       subtitle: 'Complete Control, Maximum Privacy',
       description: 'Create and manage your decentralized identity without relying on centralized authorities. Your data, your control.',
-      icon: <Key className="w-16 h-16 text-white" />,
+      icon: <Icon icon="mdi:key" className="w-16 h-16 text-white" />,
       gradient: 'from-blue-500 to-blue-600',
       features: [
         'Self-sovereign identity management',
@@ -57,7 +42,7 @@ const WelcomeScreens: React.FC<WelcomeScreensProps> = ({ onGetStarted }) => {
       title: 'Verifiable Credentials',
       subtitle: 'Trusted Digital Certificates',
       description: 'Collect and present tamper-proof digital credentials from trusted issuers. Prove your qualifications instantly.',
-      icon: <Award className="w-16 h-16 text-white" />,
+      icon: <Icon icon="mdi:award" className="w-16 h-16 text-white" />,
       gradient: 'from-green-500 to-green-600',
       features: [
         'University degrees & certifications',
@@ -71,7 +56,7 @@ const WelcomeScreens: React.FC<WelcomeScreensProps> = ({ onGetStarted }) => {
       title: 'Build Your Reputation',
       subtitle: 'Earn Trust Through Verification',
       description: 'Build a verifiable reputation score based on your credentials, community attestations, and network participation.',
-      icon: <Star className="w-16 h-16 text-white" />,
+      icon: <Icon icon="mdi:star" className="w-16 h-16 text-white" />,
       gradient: 'from-purple-500 to-purple-600',
       features: [
         'Algorithmic reputation scoring',
@@ -85,7 +70,7 @@ const WelcomeScreens: React.FC<WelcomeScreensProps> = ({ onGetStarted }) => {
       title: 'Earn NEXDEN Rewards',
       subtitle: 'Stake, Earn, and Grow',
       description: 'Stake NEXDEN tokens to earn rewards while contributing to network security and your reputation score.',
-      icon: <Coins className="w-16 h-16 text-white" />,
+      icon: <Icon icon="mdi:coins" className="w-16 h-16 text-white" />,
       gradient: 'from-orange-500 to-orange-600',
       features: [
         'Competitive staking rewards',
@@ -99,7 +84,7 @@ const WelcomeScreens: React.FC<WelcomeScreensProps> = ({ onGetStarted }) => {
       title: 'Connected Ecosystem',
       subtitle: 'Seamless Integration',
       description: 'Connect with trusted platforms, DeFi protocols, and services that recognize your NexDentify reputation.',
-      icon: <Globe className="w-16 h-16 text-white" />,
+      icon: <Icon icon="mdi:web" className="w-16 h-16 text-white" />,
       gradient: 'from-cyan-500 to-cyan-600',
       features: [
         'DeFi protocol integrations',
@@ -188,7 +173,7 @@ const WelcomeScreens: React.FC<WelcomeScreensProps> = ({ onGetStarted }) => {
           <div className="space-y-3">
             {currentScreenData.features.map((feature, index) => (
               <div key={index} className="flex items-center space-x-3 text-left">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                <Icon icon="mdi:check-circle" className="w-5 h-5 text-green-500 flex-shrink-0" />
                 <span className="text-dark-text text-sm">{feature}</span>
               </div>
             ))}
@@ -201,7 +186,7 @@ const WelcomeScreens: React.FC<WelcomeScreensProps> = ({ onGetStarted }) => {
               className="w-full bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-4 rounded-xl font-semibold text-lg hover:opacity-90 transition-opacity flex items-center justify-center space-x-2"
             >
               <span>{currentScreen === screens.length - 1 ? 'Get Started' : 'Continue'}</span>
-              <ArrowRight className="w-5 h-5" />
+              <Icon icon="mdi:arrow-right" className="w-5 h-5" />
             </button>
 
             {currentScreen > 0 && (

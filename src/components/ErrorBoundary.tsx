@@ -1,5 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { errorHandler } from '../utils/errorHandler';
 
 interface Props {
@@ -48,7 +48,7 @@ class ErrorBoundary extends Component<Props, State> {
         <div className="min-h-screen bg-dark-bg flex items-center justify-center p-4">
           <div className="max-w-md w-full text-center space-y-6">
             <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto">
-              <AlertTriangle className="w-8 h-8 text-red-500" />
+              <Icon icon="mdi:alert-triangle" className="w-8 h-8 text-red-500" />
             </div>
             
             <div>
@@ -80,7 +80,7 @@ class ErrorBoundary extends Component<Props, State> {
                 onClick={this.handleReload}
                 className="flex-1 bg-gradient-to-r from-primary-red to-primary-red-dark text-white py-3 px-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
               >
-                <RefreshCw className="w-4 h-4" />
+                <Icon icon="mdi:refresh" className="w-4 h-4" />
                 <span>Reload Page</span>
               </button>
               
@@ -88,7 +88,7 @@ class ErrorBoundary extends Component<Props, State> {
                 onClick={this.handleGoHome}
                 className="flex-1 bg-dark-card border border-dark-border text-dark-text py-3 px-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:border-primary-red-light/30 transition-colors"
               >
-                <Home className="w-4 h-4" />
+                <Icon icon="mdi:home" className="w-4 h-4" />
                 <span>Go Home</span>
               </button>
             </div>

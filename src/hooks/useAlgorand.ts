@@ -64,7 +64,9 @@ export const useAlgorand = () => {
         localStorage.setItem('nexdentify-seed-phrase', seedPhrase);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to connect wallet');
+      const errorMessage = err instanceof Error ? err.message : 'Failed to connect wallet';
+      setError(errorMessage);
+      console.error('Wallet connection error:', err);
     } finally {
       setLoading(false);
     }
